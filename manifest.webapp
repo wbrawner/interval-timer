@@ -1,0 +1,15 @@
+{
+  "name": "Advanced Interval Timer",
+  "description": "An interval timer that allows you to completely customize the intervals",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/img/icon-512.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "William Brawner",
+    "url": "http://wbrawner.com"
+  },
+  "default_locale": "en",
+  "chrome": { "navigation": false }
+}

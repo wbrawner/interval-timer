@@ -1,0 +1,71 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+	font-family: Helvetica;
+	margin: -20px 0 0;
+	padding: 0;
+	height: 100vh;
+}
+
+a:link, a:hover, a:visited, a:active {
+	color: inherit;
+}
+
+.timer-box {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 90%;
+	margin: auto;
+	height: auto;
+	text-align: center;
+}
+
+.timer-info p {
+	padding: 0;
+	margin: 20px auto;
+}
+
+.timer-controls {
+	text-align: center;
+	font-size: 2em;
+}
+
+.yellow {
+	background-color: #ffff00;
+	color: #8c8c00;
+}
+
+.red {
+	background-color: #ff3333;
+	color: #951e1e;
+}
+
+.green {
+	background-color: #49e838;
+	color: #1e5f17;
+}
+
+.blue {
+	background-color: #00e6d7;
+	color: #008077;
+}
+
+.round {
+	font-size: 2em;
+	font-style: italic;
+}
+
+.time {
+	font-size: 6em;
+	line-height: 0.75em;
+}

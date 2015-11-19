@@ -1,0 +1,1017 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"tran",
+				"translateY"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"uns",
+				"unsubscribe"
+			],
+			[
+				"button",
+				"button_text"
+			],
+			[
+				"source",
+				"source_type"
+			],
+			[
+				"but",
+				"button_text"
+			],
+			[
+				"is",
+				"is_show"
+			],
+			[
+				"sour",
+				"source_type"
+			],
+			[
+				"site",
+				"site_url"
+			],
+			[
+				"curr",
+				"current_page_reference"
+			],
+			[
+				"sit",
+				"site_url"
+			],
+			[
+				"currn",
+				"current_page"
+			],
+			[
+				"current",
+				"current_page"
+			],
+			[
+				"field",
+				"field_id"
+			],
+			[
+				"do",
+				"do_not_duplicate"
+			],
+			[
+				"header",
+				"header-icons"
+			],
+			[
+				"vid",
+				"vid_name"
+			],
+			[
+				"logo",
+				"logo_max_width"
+			],
+			[
+				"lo",
+				"logo_max_width"
+			],
+			[
+				"image",
+				"image_id"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"over",
+				"overview-below-head"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"sub",
+				"subscribed_user"
+			],
+			[
+				"comm",
+				"comment_ID"
+			],
+			[
+				"comme",
+				"comments"
+			],
+			[
+				"refer",
+				"referenced_user_login"
+			],
+			[
+				"wrt",
+				"write_log"
+			],
+			[
+				"conte",
+				"content_array"
+			],
+			[
+				"not",
+				"notification_user"
+			],
+			[
+				"no",
+				"notification"
+			],
+			[
+				"wr",
+				"write_log"
+			],
+			[
+				"notifi",
+				"notifcation"
+			],
+			[
+				"post",
+				"post_name"
+			],
+			[
+				"pr",
+				"profile-cover"
+			],
+			[
+				"bp_",
+				"bp_displayed_user_id"
+			],
+			[
+				"bp",
+				"bp_displayed_user_id"
+			],
+			[
+				"author",
+				"author_ids"
+			],
+			[
+				"cat",
+				"cat_ids"
+			],
+			[
+				"autho",
+				"author_ids"
+			],
+			[
+				"subsc",
+				"subscription_IDs"
+			],
+			[
+				"subscription",
+				"subscription_IDs"
+			],
+			[
+				"subscribe",
+				"subscribe_to_source"
+			],
+			[
+				"cate",
+				"categoryIDs"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"au",
+				"authorID"
+			],
+			[
+				"signIn",
+				"signInLink"
+			],
+			[
+				"forgot",
+				"forgotpwdlink"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"b-cont",
+				"b-container-text"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"b-c",
+				"b-container-right-ad"
+			],
+			[
+				"b-con",
+				"b-container-text"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"category",
+				"category_name"
+			],
+			[
+				"men",
+				"menu_list"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 120,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 757,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "manifest.webapp",
+			"settings":
+			{
+				"buffer_size": 393,
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		},
+		{
+			"file": "css/styles.css",
+			"settings":
+			{
+				"buffer_size": 1209,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 250.0,
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 153.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/member-header.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/single/member-header.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/header.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/category.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/footer.php",
+		"/home/billy/Documents/the-floor/profile.html",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/register.php",
+		"/run/user/1000/gvfs/ftp:host=brewingit.com/public_html/floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/member-header.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/wp-facebook-login/public/class-facebook-login-public.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/wp-facebook-login/public/css/facebook-login.css",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/index.php",
+		"/home/billy/Documents/the-floor/sign_in.html",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/single-show.php",
+		"/home/billy/Downloads/Embeddable Player using JavaScript.txt",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/content.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/activate.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/style.css",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/functions.php",
+		"/home/billy/.cache/.fr-qxrU7L/wp-facebook-login/facebook-login.php",
+		"/home/billy/.cache/.fr-KukgEe/wp-facebook-login/facebook-login.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/content-video.php",
+		"/home/billy/Documents/the-floor/comment-notifications.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-messages/bp-messages-notifications.php",
+		"/home/billy/Documents/the-floor/show.php",
+		"/run/user/1000/gvfs/ftp:host=brewingit.com/public_html/coordinates2014/index.php",
+		"/home/billy/Downloads/index.html",
+		"/home/billy/Downloads/style.css",
+		"/home/billy/Downloads/product-overview.html",
+		"/home/billy/Downloads/products.html",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/profile.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress-xprofile-image-field/bp-xprofile-image-field.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/buddypress.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/comments.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-core/bp-core-avatars.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-notifications/bp-notifications-adminbar.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-notifications/bp-notifications-functions.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/settings.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/activity.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/notifications.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/home.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/index.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-core/classes/class-bp-user-query.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/single.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/page.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/content-bp_members.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/tag.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/search.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/twentyfourteen/category.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/profile/profile-wp.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/single/profile/profile-wp.php",
+		"/home/billy/Documents/the-floor/css/style.css",
+		"/home/billy/Documents/the-floor/articles/article-op1.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-notifications/bp-notifications-actions.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-notifications/bp-notifications-screens.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-notifications/bp-notifications-template.php",
+		"/home/billy/Documents/the-floor/wp-includes/wp-db.php",
+		"/home/billy/Documents/wp-subscribe-to-show.php",
+		"/home/billy/Documents/the-floor/subscribe.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/subscribe.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/bp-custom.php",
+		"/run/user/1000/gvfs/ftp:host=50.23.201.243/public_html/archives/index.html",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/author-bio.php",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/author.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-members/bp-members-functions.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-templates/bp-legacy/css/buddypress.css",
+		"/home/billy/Documents/the-floor/wp-includes/functions.php",
+		"/home/billy/Documents/the-floor/profile_edit.html",
+		"/run/user/1000/gvfs/ftp:host=brewingit.com/public_html/blfa-archives/wp-content/themes/blfa/index.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/header.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/single/settings/profile.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/single/profile/change-avatar.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/members-loop.php",
+		"/home/billy/Documents/the-floor/wp-content/plugins/buddypress/bp-themes/bp-default/members/index.php",
+		"/home/billy/Documents/the-floor/sign_up.html",
+		"/home/billy/Documents/the-floor/forgot_pass.html",
+		"/home/billy/Documents/the-floor/wp-content/themes/the-floor/archive.php",
+		"/run/user/1000/gvfs/ftp:host=162.210.49.243/public_html/index.html",
+		"/home/billy/Documents/the-floor/profile_subscribed.html",
+		"/home/billy/Documents/the-floor/articles/the-floor/dan-gagliasso/article-format.php",
+		"/home/billy/Documents/the-floor/wp-includes/capabilities.php",
+		"/run/user/1000/gvfs/ftp:host=162.210.49.243/app/models/Hotels.php",
+		"/home/billy/Documents/the-floor/index.php",
+		"/home/billy/Documents/the-floor/wordpress/index.php",
+		"/home/billy/Documents/the-floor/header.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/ezra-schwarcz/ezra-schwarcz-article-format.php",
+		"/home/billy/Downloads/footer.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/mark-stein-slams-hillary.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/refugee-island.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/nm.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/how-to-read-polls.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/zombies.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/bernie-sanders-isnt-extreme.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/pro-hillary-super-pac.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/j-w-baker/al-qaeda-isis.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/j-w-baker/campus-sexual-assault.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/911-memorial.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/honest-joe.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/irans-latest-threat.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/nuclear-north-korea.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/phil-c/woman-in-oval-office.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/fabio-mogavero-article-format.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/gangsta-trump-pt-1.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/gangsta-trump-pt-2.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/pope-visit.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/fabio-mogavero/trump-obama-muslim.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/ezra-schwarcz/planned-parenthood-2011.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/ca-vote.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/clockbomb.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/donald-trumps-mass-deportation.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/jon-green-article-format.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/kim-davis-back-at-work.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/louie-gohmert.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/martin-omalleys-rain-tax.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/oath-keepers-kim-davis.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/ramos-vs-trump.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/republican-hearings-planned-parenthood.php",
+		"/home/billy/Documents/the-floor/articles/americablog/jon-green/volkswagen-ordered-to-recall.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/rianna-young/carsons-policy-prescriptions.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/j-w-baker/chris-christie-fedex.php",
+		"/home/billy/Documents/the-floor/articles/the-floor/rianna-young/syrias-neighbors.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/235.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/234.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/232.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/233.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/231.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/230.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/225.php",
+		"/home/billy/Documents/the-floor/videos/anarchast/226.php"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\"",
+			"is_user_sub",
+			"write_log",
+			"The content is",
+			"the content is",
+			"write_log",
+			"write",
+			"tagTitle",
+			"tagSlug",
+			"button-nav-",
+			"show",
+			"button-nav-cta",
+			"icon",
+			"header",
+			"\"",
+			"jquery",
+			"\"",
+			"format",
+			"notification",
+			"notifications",
+			"format",
+			"comment",
+			"new_message",
+			".profile-cover",
+			"visib",
+			"privacy",
+			"fetch_avatar",
+			"bp_core_user",
+			"fetch_avatar",
+			"displayed_user",
+			"displayed_user_avatar",
+			"avatar",
+			"notif",
+			")); ",
+			">\n",
+			"w-container",
+			"you have ",
+			"author_id",
+			"usermeta",
+			"[",
+			"src=\"images",
+			"floor",
+			"thefloor",
+			"feature-link",
+			"feature-titles_box",
+			"feature-titles",
+			"feature-im",
+			"author",
+			"Messages",
+			"b-container",
+			"b-",
+			"from your",
+			"feed",
+			"bp_before",
+			"<",
+			"bp_before",
+			"bp_before_pr",
+			"before_pr",
+			"cls",
+			"#signIn",
+			"signIn",
+			"fboxes",
+			"global-nav__sc",
+			"b-conta",
+			"makeCards",
+			"container--text",
+			"style",
+			"b-conta",
+			"w-container",
+			"w-container--text",
+			"delete_published_posts",
+			"delete_posts",
+			"author",
+			"supplier",
+			"register_nav_menu",
+			".global-nav",
+			"overflow-y",
+			"steyn",
+			"stein",
+			"less econo",
+			"<base target=\"_self\" href=\"http://localhost:8888/\">",
+			"trump",
+			"trump's",
+			"trump's st",
+			"trump's story",
+			"america",
+			"making america",
+			"neces",
+			"rain tax",
+			"nothing",
+			"z-index: 999",
+			"padding: 5px 15",
+			"z-index: 999",
+			"btn",
+			"may",
+			"12.1",
+			"header",
+			"slide one",
+			"li",
+			"ul",
+			"+",
+			"<p>",
+			"reachthe",
+			"tea ",
+			"hotel-detail",
+			"White",
+			"White\nwhite",
+			"White",
+			"travelzeeky"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\\"",
+			"category_title",
+			"category_slug",
+			"\\\"",
+			"makeSliderCard"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "js/app.js",
+					"settings":
+					{
+						"buffer_size": 120,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								120,
+								120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "manifest.webapp",
+					"settings":
+					{
+						"buffer_size": 393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								389,
+								389
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "css/styles.css",
+					"settings":
+					{
+						"buffer_size": 1209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1133,
+								1133
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"content",
+				"wp-content/themes/the-floor/content.php"
+			],
+			[
+				"single",
+				"wp-content/themes/the-floor/single-show.php"
+			],
+			[
+				"footer",
+				"wp-content/themes/the-floor/footer.php"
+			],
+			[
+				"function",
+				"wp-content/themes/the-floor/functions.php"
+			],
+			[
+				"header",
+				"wp-content/themes/the-floor/header.php"
+			],
+			[
+				"profile.h",
+				"profile.html"
+			],
+			[
+				"cate",
+				"wp-content/themes/the-floor/category.php"
+			],
+			[
+				"style",
+				"wp-content/themes/the-floor/style.css"
+			],
+			[
+				"signin",
+				"sign_in.html"
+			],
+			[
+				"index",
+				"wp-content/themes/the-floor/index.php"
+			],
+			[
+				"functions",
+				"wp-content/themes/the-floor/functions.php"
+			],
+			[
+				"h",
+				"wp-content/themes/the-floor/header.php"
+			],
+			[
+				"single-sh",
+				"wp-content/themes/the-floor/single-show.php"
+			],
+			[
+				"xprofile-image",
+				"wp-content/plugins/buddypress-xprofile-image-field/bp-xprofile-image-field.php"
+			],
+			[
+				"member-head",
+				"wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/member-header.php"
+			],
+			[
+				"member-h",
+				"wp-content/plugins/buddypress/bp-themes/bp-default/members/single/member-header.php"
+			],
+			[
+				"comment",
+				"wp-content/themes/the-floor/comments.php"
+			],
+			[
+				"single-s",
+				"wp-content/themes/the-floor/single-show.php"
+			],
+			[
+				"member",
+				"wp-content/plugins/buddypress/bp-themes/bp-default/members/single/member-header.php"
+			],
+			[
+				"sing",
+				"wp-content/themes/the-floor/single-show.php"
+			],
+			[
+				"page",
+				"wp-content/themes/the-floor/page.php"
+			],
+			[
+				"pagephp",
+				"wp-content/themes/the-floor/page.php"
+			],
+			[
+				"search",
+				"wp-content/themes/the-floor/search.php"
+			],
+			[
+				"tag.php",
+				"wp-content/themes/the-floor/tag.php"
+			],
+			[
+				"category",
+				"wp-content/themes/the-floor/category.php"
+			],
+			[
+				"categr",
+				"wp-content/themes/twentyfourteen/category.php"
+			],
+			[
+				"profile",
+				"wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/members/single/profile.php"
+			],
+			[
+				"pro",
+				"profile.html"
+			],
+			[
+				"artic",
+				"articles/article-op1.php"
+			],
+			[
+				"foot",
+				"wp-content/themes/the-floor/footer.php"
+			],
+			[
+				"head",
+				"wp-content/themes/the-floor/header.php"
+			],
+			[
+				"st",
+				"wp-content/themes/the-floor/style.css"
+			],
+			[
+				"subsc",
+				"subscribe.php"
+			],
+			[
+				"wp-db",
+				"wp-includes/wp-db.php"
+			],
+			[
+				"show",
+				"show.php"
+			],
+			[
+				"rticle",
+				"articles/article-op1.php"
+			],
+			[
+				"tag",
+				"wp-content/themes/the-floor/tag.php"
+			],
+			[
+				"categ",
+				"wp-content/themes/the-floor/category.php"
+			],
+			[
+				"articl",
+				"articles/article-op1.php"
+			],
+			[
+				"funcion",
+				"wp-includes/functions.php"
+			],
+			[
+				"profil",
+				"profile_edit.html"
+			],
+			[
+				"styl",
+				"wp-content/themes/the-floor/style.css"
+			],
+			[
+				"for",
+				"forgot_pass.html"
+			],
+			[
+				"sign",
+				"sign_up.html"
+			],
+			[
+				"prof",
+				"profile.html"
+			],
+			[
+				"refug",
+				"articles/the-floor/phil-c/refugee-island.php"
+			],
+			[
+				"mark",
+				"articles/the-floor/phil-c/mark-stein-slams-hillary.php"
+			],
+			[
+				"jon",
+				"articles/americablog/jon-green/jon-green-article-format.php"
+			],
+			[
+				"fabio",
+				"articles/the-floor/fabio-mogavero/fabio-mogavero-article-format.php"
+			],
+			[
+				"nm",
+				"articles/americablog/jon-green/nm.php"
+			],
+			[
+				"ca",
+				"articles/americablog/jon-green/ca-vote.php"
+			],
+			[
+				"in",
+				"index.php"
+			],
+			[
+				"carson",
+				"articles/the-floor/rianna-young/carsons-policy-prescriptions.php"
+			],
+			[
+				"ali",
+				"articles/the-floor/j-w-baker/al-qaeda-isis.php"
+			],
+			[
+				"j-w",
+				"articles/the-floor/j-w-baker/j-w-baker-article-format.php"
+			],
+			[
+				"syr",
+				"articles/the-floor/rianna-young/syrias-neighbors.php"
+			],
+			[
+				"oath",
+				"articles/americablog/jon-green/oath-keepers-kim-davis.php"
+			],
+			[
+				"article-format",
+				"articles/the-floor/phil-c/article-format.php"
+			],
+			[
+				"artile",
+				"articles/americablog/jon-green/article-format.php"
+			],
+			[
+				"article",
+				"articles/the-floor/rianna-young/article-format.php"
+			],
+			[
+				"article-",
+				"articles/americablog/jon-green/article-format.php"
+			],
+			[
+				"kim",
+				"articles/americablog/jon-green/kim-davis-back-at-work.php"
+			],
+			[
+				"art",
+				"articles/the-floor/rianna-young/article-format.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/billy/Documents/PersonalWebsite/my-site.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 295.0,
+	"status_bar_visible": true
+}
