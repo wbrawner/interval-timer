@@ -37,7 +37,9 @@ a:link, a:hover, a:visited, a:active {
 
 .timer-controls {
 	text-align: center;
-	font-size: 2em;
+	font-size: 6vh;
+	width: 30vw;
+	margin: auto;
 }
 
 .yellow {
@@ -61,11 +63,74 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .round {
-	font-size: 2em;
+	font-size: 6vh;
 	font-style: italic;
 }
 
 .time {
-	font-size: 6em;
-	line-height: 0.75em;
+	font-size: 20vh;
+	line-height: 12vh;
+}
+
+.menu-top {
+	position: absolute;
+	top: 0;
+	height: 10vh;
+	text-align: center;
+	width: 100%;
+}
+
+.menu-bottom {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 10vh;
+}
+
+.menu-button {
+	margin: 0 15px;
+	font-size: 6vh;
+}
+
+.settings-menu {
+	position: absolute;
+	top: 0;
+	color: inherit;
+	background-color: inherit;
+	height: 100vh;
+	width: 100%;
+}
+
+#timer-setup {
+	padding: 5% auto;
+}
+
+#timer-setup input, label, #save {
+	color: inherit;
+	display: block;
+	width: 80%;
+	margin: 5px 9%;
+	padding: 1%;
+	font-size: 2em;
+}
+
+#back {float: left;}
+#next {float: right;}
+
+#save {
+	text-align: center;
+	text-decoration: none; 
+}
+
+#timer-name {
+	line-height: 60px;
+	text-decoration: none;
+}
+
+#timer-menu-btn {
+	float: left;
+}
+
+#timer-reset-btn {
+	float: right;
 }

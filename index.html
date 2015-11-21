@@ -1,21 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="interval-timer">
     <head>
         <meta charset="UTF-8" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <script type="text/javascript" src="js/angular.min.js"></script>
-        <!--<script type="text/javascript" src="js/app.js"></script>-->
+        <script type="text/javascript" src="js/countdown.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
     </head>
-    <body class="green">
+    <body ng-controller="timerCtrl as timer" ng-class="{'green': lowIntensity, 'red': highIntensity, 'blue': coolDown, 'yellow': warmUp }">
+        <div class="menu-top">
+            <a href="#" id="timer-name" class="menu-button">{{ timer.name }}<!--  <i class="fa fa-angle-down"></i> --></a>
+        </div>
         <div class="timer-box">
             <div class="timer-info">
-                <p class="round">5/8</p>
-                <p class="time">12:34</p>
+                <p class="round">{{ round }}/{{ timer.cycles }}</p>
+                <p class="time">{{ time * 1000 | date : "mm:ss" }}</p>
             </div>
             <div class="timer-controls">
-                <a id="play" class="control-button" href="#"><i class="fa fa-play"></i></a>
+                <a id="back" ng-click="stepBack()" class="control-button" href="#"><i class="fa fa-step-backward"></i></a>
+                <a id="play" ng-hide="timerActive" ng-click="startTimer()" class="control-button" href="#"><i class="fa fa-play"></i></a>
+                <a id="pause" ng-show="timerActive" ng-click="pauseTimer()" class="control-button" href="#"><i class="fa fa-pause"></i></a>
+                <a id="next" ng-click="stepForward()" class="control-button" href="#"><i class="fa fa-step-forward"></i></a>
             </div>
+        </div>
+        <div class="menu-bottom">
+            <a href="#" ng-click="settingsOpen = true" id="timer-menu-btn" class="menu-button"><i class="fa fa-hourglass-o"></i></a>
+            <a id="timer-reset-btn" ng-click="resetTimer()" href="#" class="menu-button"><i class="fa fa-refresh"></i></a>
+        </div>
+        <div ng-show="settingsOpen" class="settings-menu">
+            <form id="timer-setup" name="timer-setup">
+                <label>Timer Name:</label>
+                <input type="text" ng-model="timer.name">
+                <label>Warm Up:</label>
+                <input type="number" ng-model="warmUpTime">
+                <label>Low Intensity:</label>
+                <input type="number" ng-model="lowIntensityTime">
+                <label>High Intensity:</label>
+                <input type="number" ng-model="highIntensityTime">
+                <label>Cool Down:</label>
+                <input type="number" ng-model="coolDownTime">
+                <label>Rounds:</label>
+                <input type="number" ng-model="timer.cycles">
+                <a class="form-button" id="save" ng-click="settingsOpen = false; time = warmUpTime; resetTimer()" href="#"> Save Changes</a>
+            </form>
         </div>
     </body>
 </html>

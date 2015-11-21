@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
 				"pad",
 				"padding"
 			],
@@ -14,10 +22,6 @@
 			[
 				"tran",
 				"translateY"
-			],
-			[
-				"font",
-				"font-style"
 			],
 			[
 				"uns",
@@ -259,7 +263,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 757,
+				"buffer_size": 1358,
 				"line_ending": "Unix"
 			}
 		},
@@ -276,7 +280,7 @@
 			"file": "css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1209,
+				"buffer_size": 1597,
 				"line_ending": "Unix"
 			}
 		}
@@ -596,8 +600,8 @@
 						"selection":
 						[
 							[
-								120,
-								120
+								118,
+								118
 							]
 						],
 						"settings":
@@ -617,15 +621,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 757,
+						"buffer_size": 1358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								65,
-								65
+								852,
+								852
 							]
 						],
 						"settings":
@@ -635,7 +639,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -674,15 +678,15 @@
 					"file": "css/styles.css",
 					"settings":
 					{
-						"buffer_size": 1209,
+						"buffer_size": 1597,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1133,
-								1133
+								1458,
+								1458
 							]
 						],
 						"settings":
@@ -692,7 +696,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 1188.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1003,7 +1007,7 @@
 		[
 			[
 				"",
-				"/home/billy/Documents/PersonalWebsite/my-site.sublime-project"
+				"/home/billy/Documents/the-floor.sublime-project"
 			]
 		],
 		"width": 380.0
