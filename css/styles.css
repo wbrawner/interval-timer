@@ -13,6 +13,8 @@ body {
 	margin: -20px 0 0;
 	padding: 0;
 	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
 }
 
 a:link, a:hover, a:visited, a:active {
@@ -62,6 +64,26 @@ a:link, a:hover, a:visited, a:active {
 	color: #008077;
 }
 
+.yellow #save {
+	background-color: #8c8c00;
+	color: #ffff00;
+}
+
+.blue #save {
+	background-color: #008077;
+	color: #00e6d7;
+}
+
+.red #save {
+	color: #ff3333;
+	background-color: #951e1e;
+}
+
+.green #save {
+	color: #49e838;
+	background-color: #1e5f17;
+}
+
 .round {
 	font-size: 6vh;
 	font-style: italic;
@@ -95,10 +117,12 @@ a:link, a:hover, a:visited, a:active {
 .settings-menu {
 	position: absolute;
 	top: 0;
+	right: 100%;
 	color: inherit;
 	background-color: inherit;
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
+	overflow-y: scroll;
 }
 
 #timer-setup {
@@ -109,9 +133,14 @@ a:link, a:hover, a:visited, a:active {
 	color: inherit;
 	display: block;
 	width: 80%;
-	margin: 5px 9%;
+	margin: 5px auto;
 	padding: 1%;
 	font-size: 2em;
+}
+
+#timer-setup input, #save {
+	border-radius: 10px;
+	border: solid 2px;
 }
 
 #back {float: left;}
@@ -119,7 +148,8 @@ a:link, a:hover, a:visited, a:active {
 
 #save {
 	text-align: center;
-	text-decoration: none; 
+	text-decoration: none;
+	margin: 25px auto;
 }
 
 #timer-name {
@@ -133,4 +163,32 @@ a:link, a:hover, a:visited, a:active {
 
 #timer-reset-btn {
 	float: right;
+}
+@keyframes slideIn {
+    from {right: 100%;}
+    to {right: 0;}
+}           
+@keyframes slideOut {
+    from {right: 0;}
+    to {right: 100%;}
+}           
+.slideIn {
+    -moz-animation: slideIn 0.1s ease-in;
+    -webkit-animation: slideIn 0.1s ease-in;
+    -o-animation: slideIn 0.1s ease-in;
+    animation: slideIn 0.1s ease-in;
+    right: 0;
+}           
+.slideOut {
+    -moz-animation: slideOut 0.1s ease-out;
+    -webkit-animation: slideOut 0.1s ease-out;
+    -o-animation: slideOut 0.1s ease-out;
+    animation: slideOut 0.1s ease-out;
+    right: 100%;
+}
+
+@media all and (max-width: 768px) {
+	.timer-controls {
+		width: 75vw;
+	}
 }

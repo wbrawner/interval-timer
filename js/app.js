@@ -36,7 +36,7 @@
   app.controller('timerCtrl', ['$scope', function($scope){
     $scope.lowIntensityBeep = new Audio('audio/beep-09.mp3');
     $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
-    $scope.coolDownBeep = new Audio('beep-10.mp3');
+    $scope.coolDownBeep = new Audio('audio/beep-10.mp3');
     $scope.round = 1;
     $scope.cycle = 1;
     $scope.timer = timer;
@@ -47,6 +47,7 @@
     $scope.coolDownTime = timer.cool_down;
     $scope.time = $scope.warmUpTime;
     $scope.settingsOpen = false;
+    $scope.closeSettings = false;
     $scope.setWarmUp = function() {
       clearInterval($scope.countdown);
       $scope.warmUp = true;

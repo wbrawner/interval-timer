@@ -26,10 +26,10 @@
             </div>
         </div>
         <div class="menu-bottom">
-            <a href="#" ng-click="settingsOpen = true" id="timer-menu-btn" class="menu-button"><i class="fa fa-hourglass-o"></i></a>
+            <a href="#" ng-click="settingsOpen = true; closeSettings = false;" id="timer-menu-btn" class="menu-button"><i class="fa fa-hourglass-o"></i></a>
             <a id="timer-reset-btn" ng-click="resetTimer()" href="#" class="menu-button"><i class="fa fa-refresh"></i></a>
         </div>
-        <div ng-show="settingsOpen" class="settings-menu">
+        <div ng-class="{ 'slideIn': settingsOpen, 'slideOut': closeSettings }" class="settings-menu">
             <form id="timer-setup" name="timer-setup">
                 <label>Timer Name:</label>
                 <input type="text" ng-model="timer.name">
@@ -43,7 +43,7 @@
                 <input type="number" ng-model="coolDownTime">
                 <label>Rounds:</label>
                 <input type="number" ng-model="timer.cycles">
-                <a class="form-button" id="save" ng-click="settingsOpen = false; time = warmUpTime; resetTimer()" href="#"> Save Changes</a>
+                <a class="form-button" id="save" ng-click="settingsOpen = false; closeSettings = true; time = warmUpTime; resetTimer()" href="#"> Save Changes</a>
             </form>
         </div>
     </body>
