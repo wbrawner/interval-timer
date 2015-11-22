@@ -52,15 +52,6 @@
         $scope.time = $scope.timer.warmUpTime;
         $scope.settingsOpen = false;
         $scope.closeSettings = false;
-        $scope.getTimeRemaining = function() {
-            var totalWarmUpTime = $scope.timer.warmUpTime * $scope.timer.cycles;
-            var totalLowIntensityTime = ($scope.timer.lowIntensityTime * $scope.timer.cycles * $scope.timer.rounds) - ($scope.round * $scope.timer.lowIntensityTime) - ($scope.timer.rounds * $scope.cycle * $scope.timer.lowIntensityTime);
-            var totalHighIntensityTime = ($scope.timer.highIntensityTime * $scope.timer.cycles * $scope.timer.rounds) - ($scope.round * $scope.timer.highIntensityTime) - ($scope.timer.rounds * $scope.cycle * $scope.timer.highIntensityTime);
-            var totalCoolDownTime = $scope.timer.coolDownTime;
-            return (totalWarmUpTime + totalLowIntensityTime + totalHighIntensityTime + totalCoolDownTime) * 1000;
-        }
-        $scope.timeRemaining = $scope.getTimeRemaining();
-        console.log($scope.timeRemaining);
         $scope.setWarmUp = function() {
           clearInterval($scope.countdown);
           $scope.warmUp = true;
@@ -95,7 +86,6 @@
           };
           $scope.$apply(function() {
             $scope.time--;
-            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startCoolDown = function() {
@@ -105,7 +95,6 @@
           };
           $scope.$apply(function() {
             $scope.time--;
-            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startLowIntensity = function() {
@@ -115,7 +104,6 @@
           };
           $scope.$apply(function() {
             $scope.time--;
-            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startHighIntensity = function() {
@@ -141,7 +129,6 @@
             };
             $scope.$apply(function() {
                 $scope.time--;
-                $scope.timeRemaining = $scope.getTimeRemaining();
             });
         };
         $scope.startTimer = function() {

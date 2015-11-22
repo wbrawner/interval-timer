@@ -24,9 +24,6 @@
                 <a id="pause" ng-show="timerActive" ng-click="pauseTimer()" class="control-button" href="#"><i class="fa fa-pause"></i></a>
                 <a id="next" ng-click="stepForward()" class="control-button" href="#"><i class="fa fa-step-forward"></i></a>
             </div>
-            <div class="timer-info">
-                <p class="time-info">Time Remaining: {{ timeRemaining | date : "mm:ss" }}</p>
-            </div>
         </div>
         <div class="menu-bottom">
             <a href="#" ng-click="settingsOpen = true; closeSettings = false;" id="timer-menu-btn" class="menu-button"><i class="fa fa-hourglass-o"></i></a>
