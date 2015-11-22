@@ -47,8 +47,8 @@
         $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
         $scope.coolDownBeep = new Audio('audio/beep-10.mp3');
         $scope.warmUp = true;
-        $scope.round = 0;
-        $scope.cycle = 0;
+        $scope.round = 1;
+        $scope.cycle = 1;
         $scope.time = $scope.timer.warmUpTime;
         $scope.settingsOpen = false;
         $scope.closeSettings = false;
@@ -108,23 +108,16 @@
         };
         $scope.startHighIntensity = function() {
             if ($scope.time == 0) {
-                if ($scope.round !== $scope.timer.rounds) {
-                    $scope.round++;
-                }
                 $scope.highIntensity = false;
-                if ($scope.round < $scope.timer.rounds) {
-                    $scope.setLowIntensity();
-                } else {
+                if ($scope.round == $scope.timer.rounds && $scope.cycle == $scope.timer.cycles) {
+                    $scope.setCoolDown();
+                } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                     $scope.cycle++;
-                    // console.log($scope.cycle);
-                    // console.log($scope.timer.cycles);
-                    if ($scope.cycle < $scope.timer.cycles) {
-                        $scope.warmUp = true;
-                        $scope.setWarmUp();
-                    } else {
-                        $scope.coolDown = true;
-                        $scope.setCoolDown();
-                    }
+                    $scope.round = 1;
+                    $scope.setWarmUp();
+                } else {
+                    $scope.setLowIntensity();
+                    $scope.round++;
                 }
             };
             $scope.$apply(function() {
@@ -152,7 +145,7 @@
         };
         $scope.stepBack = function() {
           if ($scope.warmUp) {
-            if ($scope.cycle != 1) {
+            if ($scope.cycle != 0) {
                 $scope.warmUp = false;
                 $scope.cycle--;
                 $scope.setHighIntensity();
@@ -164,7 +157,7 @@
           };
           if ($scope.lowIntensity) {
             $scope.lowIntensity = false;
-            if ($scope.round == 1) {
+            if ($scope.round == 0) {
               $scope.setWarmUp();
               return;
             }
@@ -201,7 +194,7 @@
               return;
             } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                 $scope.cycle++;
-                $scope.round = 0;
+                $scope.round = 1;
                 $scope.setWarmUp();
                 return;
             }
@@ -213,8 +206,8 @@
         $scope.resetTimer = function() {
           clearInterval($scope.countdown);
           $scope.timerActive = false;
-          $scope.round = 0;
-          $scope.cycle = 0;
+          $scope.round = 1;
+          $scope.cycle = 1;
           $scope.lowIntensity = false;
           $scope.highIntensity = false; 
           $scope.coolDown = false;
