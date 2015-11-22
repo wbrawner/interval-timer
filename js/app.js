@@ -40,11 +40,11 @@
     $scope.round = 1;
     $scope.cycle = 1;
     $scope.timer = timer;
-    $scope.warmUp = true;
     $scope.warmUpTime = timer.warm_up;
     $scope.lowIntensityTime = timer.low_intensity;
     $scope.highIntensityTime = timer.high_intensity;
     $scope.coolDownTime = timer.cool_down;
+    $scope.warmUp = true;
     $scope.time = $scope.warmUpTime;
     $scope.settingsOpen = false;
     $scope.closeSettings = false;
