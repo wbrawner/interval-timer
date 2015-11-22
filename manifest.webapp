@@ -11,5 +11,6 @@
     "url": "http://wbrawner.com"
   },
   "default_locale": "en",
-  "chrome": { "navigation": false }
+  "chrome": { "navigation": false },
+  "csp": "default-src *; script-src 'self'; object-src 'none'; style-src 'self'"
 }
