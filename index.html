@@ -34,16 +34,16 @@
                 <label>Timer Name:</label>
                 <input type="text" ng-model="timer.name">
                 <label>Warm Up:</label>
-                <input type="number" ng-model="warmUpTime">
+                <input type="number" ng-model="timer.warmUpTime">
                 <label>Low Intensity:</label>
-                <input type="number" ng-model="lowIntensityTime">
+                <input type="number" ng-model="timer.lowIntensityTime">
                 <label>High Intensity:</label>
-                <input type="number" ng-model="highIntensityTime">
+                <input type="number" ng-model="timer.highIntensityTime">
                 <label>Cool Down:</label>
-                <input type="number" ng-model="coolDownTime">
+                <input type="number" ng-model="timer.coolDownTime">
                 <label>Rounds:</label>
                 <input type="number" ng-model="timer.cycles">
-                <a class="form-button" id="save" ng-click="settingsOpen = false; closeSettings = true; time = warmUpTime; resetTimer()" href="#"> Save Changes</a>
+                <a class="form-button" id="save" ng-click="settingsOpen = false; closeSettings = true; time = warmUpTime; resetTimer(); saveTimer()" href="#"> Save Changes</a>
             </form>
         </div>
     </body>
