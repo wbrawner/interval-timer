@@ -52,6 +52,15 @@
         $scope.time = $scope.timer.warmUpTime;
         $scope.settingsOpen = false;
         $scope.closeSettings = false;
+        $scope.getTimeRemaining = function() {
+            var totalWarmUpTime = $scope.timer.warmUpTime * $scope.timer.repeat;
+            var totalLowIntensityTime = ($scope.timer.lowIntensityTime * $scope.timer.repeat * $scope.timer.cycles) - ($scope.round * $scope.timer.lowIntensityTime) - ($scope.timer.cycles * $scope.cycle * $scope.timer.lowIntensityTime);
+            var totalHighIntensityTime = ($scope.timer.highIntensityTime * $scope.timer.repeat * $scope.timer.cycles) - ($scope.round * $scope.timer.highIntensityTime) - ($scope.timer.cycles * $scope.cycle * $scope.timer.highIntensityTime);
+            var totalCoolDownTime = $scope.timer.coolDownTime;
+            return (totalWarmUpTime + totalLowIntensityTime + totalHighIntensityTime + totalCoolDownTime) * 1000;
+        }
+        $scope.timeRemaining = $scope.getTimeRemaining();
+        console.log($scope.timeRemaining);
         $scope.setWarmUp = function() {
           clearInterval($scope.countdown);
           $scope.warmUp = true;
@@ -86,6 +95,7 @@
           };
           $scope.$apply(function() {
             $scope.time--;
+            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startCoolDown = function() {
@@ -95,6 +105,7 @@
           };
           $scope.$apply(function() {
             $scope.time--;
+            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startLowIntensity = function() {
@@ -104,6 +115,7 @@
           };
           $scope.$apply(function() {
             $scope.time--;
+            $scope.timeRemaining = $scope.getTimeRemaining();
           });
         };
         $scope.startHighIntensity = function() {
@@ -128,6 +140,7 @@
             };
             $scope.$apply(function() {
                 $scope.time--;
+                $scope.timeRemaining = $scope.getTimeRemaining();
             });
         };
         $scope.startTimer = function() {
@@ -156,7 +169,10 @@
                 $scope.cycle--;
                 $scope.setHighIntensity();
                 return;
-            };
+            } else {
+                $scope.resetTimer();
+                return;
+            }
           };
           if ($scope.lowIntensity) {
             $scope.lowIntensity = false;

@@ -15,7 +15,7 @@
         </div>
         <div class="timer-box">
             <div class="timer-info">
-                <p class="round">{{ round }}/{{ timer.cycles }}</p>
+                <p class="time-info">{{ round }}/{{ timer.cycles }}</p>
                 <p class="time">{{ time * 1000 | date : "mm:ss" }}</p>
             </div>
             <div class="timer-controls">
@@ -23,6 +23,9 @@
                 <a id="play" ng-hide="timerActive" ng-click="startTimer()" class="control-button" href="#"><i class="fa fa-play"></i></a>
                 <a id="pause" ng-show="timerActive" ng-click="pauseTimer()" class="control-button" href="#"><i class="fa fa-pause"></i></a>
                 <a id="next" ng-click="stepForward()" class="control-button" href="#"><i class="fa fa-step-forward"></i></a>
+            </div>
+            <div class="timer-info">
+                <p class="time-info">Time Remaining: {{ timeRemaining | date : "mm:ss" }}</p>
             </div>
         </div>
         <div class="menu-bottom">
