@@ -173,17 +173,17 @@ a:link, a:hover, a:visited, a:active {
     to {right: 100%;}
 }           
 .slideIn {
-    -moz-animation: slideIn 0.1s ease-in;
-    -webkit-animation: slideIn 0.1s ease-in;
-    -o-animation: slideIn 0.1s ease-in;
-    animation: slideIn 0.1s ease-in;
+    -moz-animation: slideIn 0.25s ease-in;
+    -webkit-animation: slideIn 0.25s ease-in;
+    -o-animation: slideIn 0.25s ease-in;
+    animation: slideIn 0.25s ease-in;
     right: 0;
 }           
 .slideOut {
-    -moz-animation: slideOut 0.1s ease-out;
-    -webkit-animation: slideOut 0.1s ease-out;
-    -o-animation: slideOut 0.1s ease-out;
-    animation: slideOut 0.1s ease-out;
+    -moz-animation: slideOut 0.25s ease-out;
+    -webkit-animation: slideOut 0.25s ease-out;
+    -o-animation: slideOut 0.25s ease-out;
+    animation: slideOut 0.25s ease-out;
     right: 100%;
 }
 
