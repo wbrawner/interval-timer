@@ -15,7 +15,7 @@
     //   objectStore.createIndex("name", "name", { unique: false });
     //   objectStore.createIndex("high_intensity", "high_intensity", { unique: false });
     //   objectStore.createIndex("low_intensity", "low_intensity", { unique: false });
-    //   objectStore.createIndex("cycles", "cycles", { unique: false });
+    //   objectStore.createIndex("rounds", "rounds", { unique: false });
     //   objectStore.transaction.oncomplete = function(event) {};
     // };
     // request.onsuccess = function(event) {
@@ -28,8 +28,8 @@
         "highIntensityTime" : 20,
         "lowIntensityTime" : 10,
         "coolDownTime" : 300,
-        "cycles" : 8,
-        "repeat": 6
+        "rounds" : 8,
+        "cycles": 6
     };
     app.controller('timerCtrl', ['$scope', '$cookies', function($scope, $cookies) {
         $scope.defaults = defaultTimer;
@@ -47,15 +47,15 @@
         $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
         $scope.coolDownBeep = new Audio('audio/beep-10.mp3');
         $scope.warmUp = true;
-        $scope.round = 1;
-        $scope.cycle = 1;
+        $scope.round = 0;
+        $scope.cycle = 0;
         $scope.time = $scope.timer.warmUpTime;
         $scope.settingsOpen = false;
         $scope.closeSettings = false;
         $scope.getTimeRemaining = function() {
-            var totalWarmUpTime = $scope.timer.warmUpTime * $scope.timer.repeat;
-            var totalLowIntensityTime = ($scope.timer.lowIntensityTime * $scope.timer.repeat * $scope.timer.cycles) - ($scope.round * $scope.timer.lowIntensityTime) - ($scope.timer.cycles * $scope.cycle * $scope.timer.lowIntensityTime);
-            var totalHighIntensityTime = ($scope.timer.highIntensityTime * $scope.timer.repeat * $scope.timer.cycles) - ($scope.round * $scope.timer.highIntensityTime) - ($scope.timer.cycles * $scope.cycle * $scope.timer.highIntensityTime);
+            var totalWarmUpTime = $scope.timer.warmUpTime * $scope.timer.cycles;
+            var totalLowIntensityTime = ($scope.timer.lowIntensityTime * $scope.timer.cycles * $scope.timer.rounds) - ($scope.round * $scope.timer.lowIntensityTime) - ($scope.timer.rounds * $scope.cycle * $scope.timer.lowIntensityTime);
+            var totalHighIntensityTime = ($scope.timer.highIntensityTime * $scope.timer.cycles * $scope.timer.rounds) - ($scope.round * $scope.timer.highIntensityTime) - ($scope.timer.rounds * $scope.cycle * $scope.timer.highIntensityTime);
             var totalCoolDownTime = $scope.timer.coolDownTime;
             return (totalWarmUpTime + totalLowIntensityTime + totalHighIntensityTime + totalCoolDownTime) * 1000;
         }
@@ -91,7 +91,7 @@
         $scope.startWarmUp = function() {
           if ($scope.time == 0) {
             $scope.warmUp = false;
-            $scope.setHighIntensity();
+            $scope.setLowIntensity();
           };
           $scope.$apply(function() {
             $scope.time--;
@@ -120,16 +120,17 @@
         };
         $scope.startHighIntensity = function() {
             if ($scope.time == 0) {
-                $scope.round++;
+                if ($scope.round !== $scope.timer.rounds) {
+                    $scope.round++;
+                }
                 $scope.highIntensity = false;
-                console.log("This runs");
-                if ($scope.round < $scope.timer.cycles) {
+                if ($scope.round < $scope.timer.rounds) {
                     $scope.setLowIntensity();
                 } else {
                     $scope.cycle++;
                     // console.log($scope.cycle);
-                    // console.log($scope.timer.repeat);
-                    if ($scope.cycle < $scope.timer.repeat) {
+                    // console.log($scope.timer.cycles);
+                    if ($scope.cycle < $scope.timer.cycles) {
                         $scope.warmUp = true;
                         $scope.setWarmUp();
                     } else {
@@ -208,12 +209,12 @@
           };
           if ($scope.highIntensity) {
             $scope.highIntensity = false;
-            if ($scope.round == $scope.timer.cycles && $scope.cycle == $scope.timer.repeat) {
+            if ($scope.round == $scope.timer.rounds && $scope.cycle == $scope.timer.cycles) {
               $scope.setCoolDown();
               return;
-            } else if ($scope.round == $scope.timer.cycles && $scope.cycle < $scope.timer.repeat) {
+            } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                 $scope.cycle++;
-                $scope.round = 1;
+                $scope.round = 0;
                 $scope.setWarmUp();
                 return;
             }
@@ -225,8 +226,8 @@
         $scope.resetTimer = function() {
           clearInterval($scope.countdown);
           $scope.timerActive = false;
-          $scope.round = 1;
-          $scope.cycle = 1;
+          $scope.round = 0;
+          $scope.cycle = 0;
           $scope.lowIntensity = false;
           $scope.highIntensity = false; 
           $scope.coolDown = false;
@@ -234,11 +235,7 @@
           $scope.time = $scope.timer.warmUpTime;
         };
         $scope.saveTimer = function() {
-            console.log("Saved timer:");
-            console.log($scope.timer);
             $cookies.putObject("timer", $scope.timer);
-            console.log("timer saved");
-            console.log($cookies.getObject("timer"));
         };
     }]);
 })();

@@ -15,7 +15,7 @@
         </div>
         <div class="timer-box">
             <div class="timer-info">
-                <p class="time-info">{{ round }}/{{ timer.cycles }}</p>
+                <p class="time-info">Round: {{ round + 1 }}/{{ timer.rounds }} - Cycle: {{ cycle + 1 }}/{{ timer.cycles }}</p>
                 <p class="time">{{ time * 1000 | date : "mm:ss" }}</p>
             </div>
             <div class="timer-controls">
@@ -45,6 +45,8 @@
                 <label>Cool Down:</label>
                 <input type="number" ng-model="timer.coolDownTime">
                 <label>Rounds:</label>
+                <input type="number" ng-model="timer.rounds">
+                <label>Cycles:</label>
                 <input type="number" ng-model="timer.cycles">
                 <a class="form-button" id="save" ng-click="settingsOpen = false; closeSettings = true; time = warmUpTime; resetTimer(); saveTimer()" href="#"> Save Changes</a>
             </form>
