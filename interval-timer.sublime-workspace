@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"time",
+				"timeRemaining"
+			],
+			[
+				"cool",
+				"coolDownTime"
+			],
+			[
+				"cyc",
+				"cycles"
+			],
+			[
+				"re",
+				"repeat"
+			],
+			[
+				"warm",
+				"warmUpTime"
+			],
+			[
+				"save",
+				"savedimer"
+			],
+			[
+				"d",
+				"defaults"
+			],
+			[
+				"default",
+				"defaultTimer"
+			],
+			[
+				"h",
+				"high_intensity"
+			],
+			[
 				"text",
 				"text-decoration"
 			],
@@ -216,10 +252,6 @@
 				"min-height"
 			],
 			[
-				"d",
-				"display"
-			],
-			[
 				"b-cont",
 				"b-container-text"
 			],
@@ -255,7 +287,7 @@
 			"file": "js/app.js",
 			"settings":
 			{
-				"buffer_size": 120,
+				"buffer_size": 7790,
 				"line_ending": "Unix"
 			}
 		},
@@ -263,7 +295,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1358,
+				"buffer_size": 5006,
 				"line_ending": "Unix"
 			}
 		},
@@ -271,7 +303,7 @@
 			"file": "manifest.webapp",
 			"settings":
 			{
-				"buffer_size": 393,
+				"buffer_size": 379,
 				"line_ending": "Unix",
 				"name": "{"
 			}
@@ -280,7 +312,7 @@
 			"file": "css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1597,
+				"buffer_size": 3066,
 				"line_ending": "Unix"
 			}
 		}
@@ -454,6 +486,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"http://www.yoursite.com",
+			" = 1;",
+			"round",
+			"rounds",
+			"cycles",
+			"repeat",
+			"cycles",
+			"startWarmUp",
+			"$scope.cycle",
+			"$scope.coolDownTime",
+			"$scope.highIntensityTime",
+			"$scope.lowIntensityTime",
+			"$scope.warmUpTime",
 			"\"",
 			"is_user_sub",
 			"write_log",
@@ -565,11 +610,19 @@
 			"travelzeeky"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"images",
+			"cycles",
+			"rounds",
+			"$scope.timer.cycle",
+			"$scope.timer.coolDownTime",
+			"$scope.timer.highIntensityTime",
+			"$scope.timer.lowIntensityTime",
+			"$scope.timer.warmUpTime",
 			"\\\"",
 			"category_title",
 			"category_slug",
@@ -585,7 +638,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -593,25 +646,25 @@
 					"file": "js/app.js",
 					"settings":
 					{
-						"buffer_size": 120,
+						"buffer_size": 7790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								118,
-								118
+								2249,
+								2249
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1466.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -621,15 +674,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 1358,
+						"buffer_size": 5006,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								852,
-								852
+								91,
+								91
 							]
 						],
 						"settings":
@@ -639,7 +692,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -649,15 +702,15 @@
 					"file": "manifest.webapp",
 					"settings":
 					{
-						"buffer_size": 393,
+						"buffer_size": 379,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								389,
-								389
+								0,
+								0
 							]
 						],
 						"settings":
@@ -678,15 +731,27 @@
 					"file": "css/styles.css",
 					"settings":
 					{
-						"buffer_size": 1597,
+						"buffer_size": 3066,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1458,
-								1458
+								2845,
+								2845
+							],
+							[
+								2891,
+								2891
+							],
+							[
+								2932,
+								2932
+							],
+							[
+								2970,
+								2970
 							]
 						],
 						"settings":
@@ -696,7 +761,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1188.0,
+						"translation.y": 2656.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1007,7 +1072,7 @@
 		[
 			[
 				"",
-				"/home/billy/Documents/the-floor.sublime-project"
+				"/home/billy/Documents/PersonalWebsite/my-site.sublime-project"
 			]
 		],
 		"width": 380.0

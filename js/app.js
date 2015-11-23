@@ -114,6 +114,7 @@
                 } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                     $scope.cycle++;
                     $scope.round = 1;
+                    $scope.coolDownBeep.play();
                     $scope.setWarmUp();
                 } else {
                     $scope.setLowIntensity();
