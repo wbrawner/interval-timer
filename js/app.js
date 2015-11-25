@@ -42,6 +42,13 @@
                 return $scope.defaults;
             }
         };
+        $scope.lockScreen = function() {
+          if ($scope.timerActive) {
+            $scope.lock = window.navigator.requestWakeLock('screen');
+          } else {
+            $scope.lock.unlock();
+          }
+        } 
         $scope.timer = getSavedTimer();
         $scope.lowIntensityBeep = new Audio('audio/beep-09.mp3');
         $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
@@ -127,6 +134,7 @@
         };
         $scope.startTimer = function() {
           $scope.timerActive = true;
+          $scope.lockScreen();
           if ($scope.warmUp) {
             $scope.countdown = setInterval($scope.startWarmUp, 1000);
           }
@@ -142,11 +150,12 @@
         };
         $scope.pauseTimer = function() {
           $scope.timerActive = false;
+          $scope.lockScreen();
           clearInterval($scope.countdown);
         };
         $scope.stepBack = function() {
           if ($scope.warmUp) {
-            if ($scope.cycle != 0) {
+            if ($scope.cycle > 1) {
                 $scope.warmUp = false;
                 $scope.cycle--;
                 $scope.setHighIntensity();
@@ -158,7 +167,7 @@
           };
           if ($scope.lowIntensity) {
             $scope.lowIntensity = false;
-            if ($scope.round == 0) {
+            if ($scope.round == 1) {
               $scope.setWarmUp();
               return;
             }
