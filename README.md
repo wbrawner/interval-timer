@@ -1,5 +1,6 @@
 # Interval Timer v1.1
 An interval timer app for FireFox OS
+
 Live Preview: http://wbrawner.com/interval-timer/
 
 ### Version 1.1 
