@@ -9,5 +9,10 @@
       "scripts": ["js/start.js"]
     }
   },
+  "icons": {
+    "512": "/images/icon-512.png",
+    "128": "/images/icon-128.png",
+    "60": "/images/icon-60.png"
+  },
   "offline_enabled": true
 }
