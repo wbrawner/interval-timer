@@ -41,14 +41,16 @@
             } else {
                 return $scope.defaults;
             }
-        };
+        }
         $scope.lockScreen = function() {
-          if ($scope.timerActive) {
-            $scope.lock = window.navigator.requestWakeLock('screen');
-          } else {
-            $scope.lock.unlock();
-          }
-        } 
+            if (typeof window.navigator.requestWakeLock === 'function') {
+                if ($scope.timerActive) {
+                    $scope.lock = window.navigator.requestWakeLock('screen');
+                } else {
+                    $scope.lock.unlock();
+                }
+            }
+        }
         $scope.timer = getSavedTimer();
         $scope.lowIntensityBeep = new Audio('audio/beep-09.mp3');
         $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
@@ -87,34 +89,34 @@
           $scope.startTimer();
         }
         $scope.startWarmUp = function() {
-          if ($scope.time == 0) {
+          if ($scope.time === 0) {
             $scope.warmUp = false;
             $scope.setLowIntensity();
-          };
+          }
           $scope.$apply(function() {
             $scope.time--;
           });
         };
         $scope.startCoolDown = function() {
-          if ($scope.time == 0) {
+          if ($scope.time === 0) {
             $scope.coolDown = false;
             $scope.resetTimer();
-          };
+          }
           $scope.$apply(function() {
             $scope.time--;
           });
         };
         $scope.startLowIntensity = function() {
-          if ($scope.time == 0) {
+          if ($scope.time === 0) {
             $scope.lowIntensity = false;
             $scope.setHighIntensity();
-          };
+          }
           $scope.$apply(function() {
             $scope.time--;
           });
         };
         $scope.startHighIntensity = function() {
-            if ($scope.time == 0) {
+            if ($scope.time === 0) {
                 $scope.highIntensity = false;
                 if ($scope.round == $scope.timer.rounds && $scope.cycle == $scope.timer.cycles) {
                     $scope.setCoolDown();
@@ -127,7 +129,7 @@
                     $scope.setLowIntensity();
                     $scope.round++;
                 }
-            };
+            }
             $scope.$apply(function() {
                 $scope.time--;
             });
@@ -219,7 +221,7 @@
           $scope.round = 1;
           $scope.cycle = 1;
           $scope.lowIntensity = false;
-          $scope.highIntensity = false; 
+          $scope.highIntensity = false;
           $scope.coolDown = false;
           $scope.warmUp = true;
           $scope.time = $scope.timer.warmUpTime;
