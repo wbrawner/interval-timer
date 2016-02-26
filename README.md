@@ -1,5 +1,5 @@
 # Interval Timer v1.2
-An interval timer app for FireFox and Chrome
+An interval timer app for FireFox and Chrome, built with AngularJS
 
 Live Preview: http://wbrawner.com/interval-timer/
 
