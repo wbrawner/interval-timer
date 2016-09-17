@@ -229,5 +229,13 @@
         $scope.saveTimer = function() {
             $cookies.putObject("timer", $scope.timer);
         };
+        $scope.getNumberRange = function(number) {
+            range = [];
+            for (var i = 0; i <= number; i++) {
+                range.push(i);
+            }
+            return range
+        }
+
     }]);
 })();

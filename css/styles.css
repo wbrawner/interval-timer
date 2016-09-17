@@ -9,8 +9,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 body {
-	font-family: Helvetica, Arial, sans-serif;
-	margin: -20px 0 0;
+	font-family: Open Sans, Arial, sans-serif;
 	padding: 0;
 	height: 100vh;
 	width: 100vw;
@@ -94,12 +93,41 @@ a:link, a:hover, a:visited, a:active {
 	line-height: 12vh;
 }
 
-.menu-top {
+header {
 	position: absolute;
 	top: 0;
-	height: 10vh;
+	height: 60px;
 	text-align: center;
 	width: 100%;
+        background-color: #ffeb3b;
+        box-shadow: 0 0 1px 0 #666;
+}
+
+header h1 {
+    font-weight: normal;
+    font-size: 1.25em;
+    text-align: left;
+    line-height: 60px;
+    padding-left: 60px;
+}
+
+.hamburger-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 12px;
+    padding: 24px 20px;
+}
+
+.hamburger-icon span {
+    display: block;
+    height: 1px;
+    background: #000;
+}
+
+.hamburger-icon span#middle {
+    margin: 4px 0;
 }
 
 .menu-bottom {
@@ -115,32 +143,121 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .settings-menu {
-	position: absolute;
-	top: 0;
-	right: 100%;
-	color: inherit;
-	background-color: inherit;
-	height: 100vh;
-	width: 100vw;
-	overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    color: inherit;
+    background-color: #fff;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    max-width: 320px;
+    z-index: 9999;
+
+}
+
+.settings-menu-overlay {
+    position: fixed;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: -1;
+    top: 0;
+    transition: opacity 0.25s linear;
+    opacity: 0;
+}
+
+
+.settings-menu img {
+    width: 100%;
+    display: block;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.settings-menu .fixed.bottom {
+    padding: 15px;
+    border-top: 1px solid#BDBDBD;
+    width: 100%;
+    max-width: 290px;
+}
+
+.settings-menu a {
+    color: #212121;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.settings-menu a i {
+    margin-right: 15px;
+}
+
+button.add-timer {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 0;
+    box-shadow: 1px 1px 3px 0 #666;
+    font-size: 2em;
+    color: #fff;
+    background: #FF5722;
+}
+
+.top-menu {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    border-bottom: 1px solid #BDBDBD;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 3px 0 #BDBDBD;
+}
+
+.top-menu a {
+    font-weight: 100;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #212121;
+    padding: 14px 20px;
+    display: inline-block;
+}
+
+.top-menu a:last-of-type {
+    float: right;
+}
+
+.new-timer {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    width: 100vw;
+    z-index: 99;
+    background: #fff;
+    height: 100vh;
 }
 
 #timer-setup {
-	padding: 5% auto;
+	margin-top: 70px;
 }
 
-#timer-setup input, label, #save {
-	color: inherit;
-	display: block;
-	width: 80%;
-	margin: 5px auto;
-	padding: 1%;
-	font-size: 2em;
-}
-
-#timer-setup input, #save {
-	border-radius: 10px;
-	border: solid 2px;
+#timer-setup input, #timer-setup select {
+	border-radius: 3px;
+	border: 0;
+	border-bottom: solid 1px #BDBDBD;
+	width: 100%;
+	padding: 10px 20px;
+	font-size: 1.25em;
 }
 
 #back {float: left;}
@@ -165,26 +282,30 @@ a:link, a:hover, a:visited, a:active {
 	float: right;
 }
 @keyframes slideIn {
-    from {right: 100%;}
-    to {right: 0;}
+    from {left: -100%;}
+    to {left: 0;}
 }           
 @keyframes slideOut {
-    from {right: 0;}
-    to {right: 100%;}
+    from {left: 0;}
+    to {left: -100%;}
 }           
 .slideIn {
-    -moz-animation: slideIn 0.5s ease-out;
-    -webkit-animation: slideIn 0.5s ease-out;
-    -o-animation: slideIn 0.5s ease-out;
-    animation: slideIn 0.5s ease-out;
-    right: 0;
+    -moz-animation: slideIn 0.25s ease-out;
+    -webkit-animation: slideIn 0.25s ease-out;
+    -o-animation: slideIn 0.25s ease-out;
+    animation: slideIn 0.25s ease-out;
+    left: 0;
 }           
 .slideOut {
-    -moz-animation: slideOut 0.5s ease-in;
-    -webkit-animation: slideOut 0.5s ease-in;
-    -o-animation: slideOut 0.5s ease-in;
-    animation: slideOut 0.5s ease-in;
-    right: 100%;
+    -moz-animation: slideOut 0.25s ease-in;
+    -webkit-animation: slideOut 0.25s ease-in;
+    -o-animation: slideOut 0.25s ease-in;
+    animation: slideOut 0.25s ease-in;
+    left: -100%;
+}
+.visible {
+    opacity: 0.75;
+    z-index: 999;
 }
 
 @media all and (max-width: 768px) {

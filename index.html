@@ -40,9 +40,18 @@
         <meta name="msapplication-config" content="/img/browserconfig.xml">
         <meta name="theme-color" content="#ffeb3b">
     </head>
-    <body ng-controller="timerCtrl as timer" ng-class="{'green': lowIntensity, 'red': highIntensity, 'blue': coolDown, 'yellow': warmUp }">
+    <body ng-controller="timerCtrl as timer">
+        <header>
+            <div class="hamburger-icon" ng-click="settingsOpen = true; closeSettings = false;">
+                <span></span>
+                <span id="middle"></span>
+                <span></span>
+            </div>
+            <h1>Interval Timer</h1>
+        </header>
+        <!--
         <div class="menu-top">
-            <a href="#" id="timer-name" class="menu-button">{{ timer.name }}<!--  <i class="fa fa-angle-down"></i> --></a>
+            <a href="#" id="timer-name" class="menu-button">{{ timer.name }} <i class="fa fa-angle-down"></i> </a>
         </div>
         <div class="timer-box">
             <div class="timer-info">
@@ -60,31 +69,41 @@
             <a href="#" ng-click="settingsOpen = true; closeSettings = false;" id="timer-menu-btn" class="menu-button"><i class="fa fa-hourglass-o"></i></a>
             <a id="timer-reset-btn" ng-click="resetTimer()" href="#" class="menu-button"><i class="fa fa-refresh"></i></a>
         </div>
+        -->
+        <div ng-class="{ 'visible': settingsOpen, '': closeSettings }" class="settings-menu-overlay" ng-click="settingsOpen = false; closeSettings = true;" ></div>
         <div ng-class="{ 'slideIn': settingsOpen, 'slideOut': closeSettings }" class="settings-menu">
+            <img src="./img/menu-branding.png" />
+            <div class="fixed bottom">
+                <a href="https://wbrawner.com/contact/" target="_blank"><i class="fa fa-question-circle"></i>Help &amp; feedback</a>
+            </div>
+        </div>
+        <div class="new-timer">
+            <div class="top-menu">
+                <a href="javascript:void(0)" ng-click="closeNewTimer()">&#10005;</a>
+                <a href="javascript:void(0)" ng-click="saveNewTimer()">&#10003;</a>
+            </div>
             <form id="timer-setup" name="timer-setup">
-                <label>Timer Name:</label>
-                <input type="text" ng-model="timer.name">
-                <label>Warm Up:</label>
-                <input type="number" ng-model="timer.warmUpTime">
-                <label>Low Intensity:</label>
+                <input type="text" ng-model="timer.name" placeholder="Timer Name">
+                <select ng-model="timer.warmUpTime" ng-options="number for number in getNumberRange(60)">
+                    <option value="" disabled selected>Warm-up Minutes</option>
+                </select>
                 <input type="number" ng-model="timer.lowIntensityTime">
-                <label>High Intensity:</label>
                 <input type="number" ng-model="timer.highIntensityTime">
-                <label>Cool Down:</label>
                 <input type="number" ng-model="timer.coolDownTime">
-                <label>Rounds:</label>
                 <input type="number" ng-model="timer.rounds">
-                <label>Cycles:</label>
                 <input type="number" ng-model="timer.cycles">
-                <a class="form-button" id="save" ng-click="settingsOpen = false; closeSettings = true; time = warmUpTime; resetTimer(); saveTimer()" href="#"> Save Changes</a>
             </form>
         </div>
+        <button class="add-timer">+</button>
         <script>
         if('serviceWorker' in navigator) {
           navigator.serviceWorker
                    .register('/sw.js')
                    .then(function() { console.log("Service Worker Registered"); });
         }
+        angular.element(window).bind('orientationchange', function (e) {
+            console.log(e) ;
+        });
         </script>
     </body>
 </html>
