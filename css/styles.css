@@ -103,7 +103,7 @@ a:link, a:hover, a:visited, a:active {
     left: 0;
     height: 100vh;
     width: 100vw;
-    z-index: 99;
+    z-index: 9999;
 }
 
 .timer-container {
@@ -466,13 +466,12 @@ button.add-timer {
     z-index: 99;
 }
 
-.visible {
+.opaque {
     opacity: 0.75;
     transform: rotate(0deg);
-}
-
-.visible {
-    opacity: 0.75;
     z-index: 999;
 }
 
+.visible {
+    display: block;
+}

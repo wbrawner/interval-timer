@@ -67,7 +67,7 @@
                 </a>
             </div>
         </div>
-        <div class="timer-interface" ng-show="showTimerInterface" ng-class="{ 'white': warmUp.active, 'yellow': rest.active, 'green': lowIntensity.active, 'blue': coolDown.active, 'red': highIntensity.active }">
+        <div class="timer-interface" ng-class="{ 'visible': showTimerInterface, 'white': warmUp.active, 'yellow': rest.active, 'green': lowIntensity.active, 'blue': coolDown.active, 'red': highIntensity.active }">
             <div class="timer-container">
                 <div class="timer-top">
                     <a href="#" ng-click="closeTimer()" id="timer-menu-btn" class="menu-button">&#10005</a>
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div ng-class="{ 'visible': settingsOpen, '': closeSettings }" class="settings-menu-overlay" ng-click="settingsOpen = false; closeSettings = true;" ></div>
+        <div ng-class="{ 'opaque': settingsOpen, '': closeSettings }" class="settings-menu-overlay" ng-click="settingsOpen = false; closeSettings = true;" ></div>
         <div ng-class="{ 'slideIn': settingsOpen, 'slideOut': closeSettings }" class="settings-menu">
             <img src="./img/menu-logo.png" />
             <div class="fixed bottom">

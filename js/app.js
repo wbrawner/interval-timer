@@ -88,7 +88,6 @@ if (!window.indexedDB) {
             })
         }
         $scope.setTimers();
-        console.log("noTimers: " + $scope.noTimers);
         $scope.timer = {};
         $scope.config = {};
         $scope.initObj = new Promise(function(res, rej) {
@@ -208,7 +207,6 @@ if (!window.indexedDB) {
         $scope.getTimes = function() {
             $scope.periods.forEach(function(period) {
                 var min = 0;
-                console.log(period)
                 if (typeof $scope.timer[period].min == "number" && $scope.timer[period].min > 0) {
                     min = $scope.timer[period].min * 60;
                 }
@@ -392,7 +390,6 @@ if (!window.indexedDB) {
             if (timerSkel.cycles < 1) {
                 timerSkel.cycles = 1;
             }
-            console.log(timerSkel)
             return new Promise(function(res, rej) {
                 res(timerSkel);
             })
