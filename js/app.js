@@ -112,8 +112,8 @@ if (!window.indexedDB) {
         $scope.newTimerClosed = false;
         $scope.showTimerInterface = false;
         $scope.setPeriod = function(period, playBeep) {
-            if (typeof period == "undefined") {
-                period = true;
+            if (typeof playBeep == "undefined") {
+                playBeep = true;
             }
             clearInterval($scope.countdown);
             $scope[period].active = true;
@@ -240,15 +240,8 @@ if (!window.indexedDB) {
         };
         $scope.stepBack = function() {
           if ($scope.warmUp.active) {
-            if ($scope.cycle > 1) {
-                $scope.warmUp.active = false;
-                $scope.cycle--;
-                $scope.setPeriod('highIntensity');
-                return;
-            } else {
-                $scope.resetTimer();
-                return;
-            }
+            $scope.resetTimer();
+            return;
           };
           if ($scope.lowIntensity.active) {
             $scope.lowIntensity.active = false;
@@ -271,6 +264,8 @@ if (!window.indexedDB) {
           };
           if ($scope.rest.active) {
             $scope.rest.active = false;
+            $scope.cycle--;
+            $scope.round = $scope.timer.rounds;
             $scope.setPeriod('highIntensity');
             return;
           }
