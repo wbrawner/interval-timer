@@ -1,41 +1,37 @@
-// if (!window.indexedDB) {
-//     window.alert("Your browser doesn't support a stable version of IndexedDB. You will not be able to save your timers.");
-// }
+if (!window.indexedDB) {
+    window.alert("Your browser doesn't support a stable version of IndexedDB. You will not be able to save your timers.");
+}
 
 (function() {
-    var app = angular.module('interval-timer', [ 'ngCookies' ]);
-    // var db;
-    // var request = window.indexedDB.open("myTimers", 1);
-    // request.onerror = function(event) {
-    //   alert("Error: " + event.target.errorCode);
-    // };
-    // request.onupgradeneeded = function(event) {
-    //   db = event.target.result;
-    //   var objectStore = db.createObjectStore("timers", { autoIncrement: true });
-    //   objectStore.createIndex("name", "name", { unique: false });
-    //   objectStore.createIndex("high_intensity", "high_intensity", { unique: false });
-    //   objectStore.createIndex("low_intensity", "low_intensity", { unique: false });
-    //   objectStore.createIndex("rounds", "rounds", { unique: false });
-    //   objectStore.transaction.oncomplete = function(event) {};
-    // };
-    // request.onsuccess = function(event) {
-    //   db = event.target.result;
-    // };
-    // var transaction = db.transaction(["timers"], "readwrite");
+    var app = angular.module('interval-timer', [ 'indexedDB', 'itemSwipe', 'ngAnimate', 'ngCookies', 'ngTouch' ])
+    .config(function($indexedDBProvider) {
+        $indexedDBProvider
+        .connection('interval-timer')
+        .upgradeDatabase(1, function(event, db, tx) {
+            var objStore = db.createObjectStore('timers', {keyPath: 'id'});
+            objStore.createIndex('timer_obj', 'timer', {unique: false});
+        })
+    });
     var defaultTimer = {
         "name" : "Tabata",
-        "warmUpTime": 300,
-        "highIntensityTime" : 20,
-        "lowIntensityTime" : 10,
-        "coolDownTime" : 300,
+        "description" : "A short, yet very intense workout best completed with multiple cycles",
+        "warmUp.min": 5,
+        "warmUp.sec": 0,
+        "highIntensity.min" : 0,
+        "highIntensity.sec" : 20,
+        "lowIntensity.min" : 0,
+        "lowIntensity.sec" : 10,
+        "rest.min" : 5,
+        "rest.sec" : 0,
+        "coolDown.min" : 5,
+        "coolDown.sec" : 0,
         "rounds" : 8,
         "cycles": 6
     };
-    app.controller('timerCtrl', ['$scope', '$cookies', function($scope, $cookies) {
+    app.controller('timerCtrl', ['$scope', '$cookies', '$indexedDB', function($scope, $cookies, $indexedDB) {
         $scope.defaults = defaultTimer;
         function getSavedTimer() {
             var savedTimer = $cookies.getObject("timer");
-            console.log(typeof savedTimer == "object");
             if (typeof savedTimer == "object") {
                 return savedTimer;
             } else {
@@ -51,47 +47,93 @@
                 }
             }
         }
-        $scope.timer = getSavedTimer();
-        $scope.lowIntensityBeep = new Audio('audio/beep-09.mp3');
-        $scope.highIntensityBeep = new Audio('audio/button-42(1).mp3');
-        $scope.coolDownBeep = new Audio('audio/beep-10.mp3');
-        $scope.warmUp = true;
+        $scope.timers = {}
+        $scope.periods = [
+            "warmUp",
+            "lowIntensity",
+            "highIntensity",
+            "rest",
+            "coolDown"
+        ];
+        $scope.timersLoaded = false;
+        $scope.noTimers = false;
+        $scope.setTimers = function() {
+            $indexedDB.openStore('timers', function(timers) {
+                timers.getAll()
+                .then(function(data) {
+                    $scope.timersLoaded = true;
+                    $scope.timers = data;
+                    if (data.length == 0) {
+                        $scope.noTimers = true;
+                    } else {
+                        $scope.noTimers = false;
+                    }
+                })
+            })
+        }
+        $scope.setTimers();
+        $scope.timer = {};
+        $scope.config = {};
+        $scope.initObj = new Promise(function(res, rej) {
+            $scope.periods.forEach(function(period) {
+                $scope.config[period] = {};
+                $scope[period] = {};
+                $scope.timer[period] = {};
+            })
+            res($scope.config);
+        });
+        $scope.initObj.then(function() {
+            $scope.config.lowIntensity.beep = new Audio('audio/beep-09.mp3');
+            $scope.config.highIntensity.beep = new Audio('audio/button-42(1).mp3');
+            $scope.config.coolDown.beep = new Audio('audio/beep-10.mp3');
+            $scope.warmUp.active = true;
+        })
         $scope.round = 1;
         $scope.cycle = 1;
-        $scope.time = $scope.timer.warmUpTime;
         $scope.settingsOpen = false;
         $scope.closeSettings = false;
+        $scope.newTimerOpen = false;
+        $scope.newTimerClosed = false;
+        $scope.showTimerInterface = false;
+        $scope.setPeriod = function(period, playBeep = true) {
+            clearInterval($scope.countdown);
+            $scope[period].active = true;
+            $scope.time = $scope.timer[period].time;
+            if (playBeep) {
+                if ($scope.config[period].beep) {
+                    $scope.config[period].beep.play();
+                }
+            }
+            $scope.startTimer();
+        }
         $scope.setWarmUp = function() {
-          clearInterval($scope.countdown);
-          $scope.warmUp = true;
-          $scope.time = $scope.timer.warmUpTime;
-          $scope.startTimer();
+            $scope.setPeriod('warmUp', false)
         }
         $scope.setCoolDown = function() {
           clearInterval($scope.countdown);
-          $scope.coolDown = true;
-          $scope.time = $scope.timer.coolDownTime;
+          $scope.coolDown.active = true;
+          $scope.time = $scope.timer.coolDown.time;
           $scope.coolDownBeep.play();
           $scope.startTimer();
         }
         $scope.setLowIntensity = function() {
           clearInterval($scope.countdown);
-          $scope.lowIntensity = true;
-          $scope.time = $scope.timer.lowIntensityTime;
+          $scope.lowIntensity.active = true;
+          $scope.time = $scope.timer.lowIntensity.time;
           $scope.lowIntensityBeep.play();
           $scope.startTimer();
         }
         $scope.setHighIntensity = function() {
           clearInterval($scope.countdown);
-          $scope.highIntensity = true;
-          $scope.time = $scope.timer.highIntensityTime;
+          $scope.highIntensity.active = true;
+          $scope.time = $scope.timer.highIntensity.time;
           $scope.highIntensityBeep.play();
           $scope.startTimer();
         }
         $scope.startWarmUp = function() {
           if ($scope.time === 0) {
-            $scope.warmUp = false;
-            $scope.setLowIntensity();
+            $scope.warmUp.active = false;
+            $scope.setPeriod('lowIntensity');
           }
           $scope.$apply(function() {
             $scope.time--;
@@ -99,7 +141,16 @@
         };
         $scope.startCoolDown = function() {
           if ($scope.time === 0) {
-            $scope.coolDown = false;
+            $scope.coolDown.active = false;
+            $scope.resetTimer();
+          }
+          $scope.$apply(function() {
+            $scope.time--;
+          });
+        };
+        $scope.startRest = function() {
+          if ($scope.time === 0) {
+            $scope.highIntensity.active = false;
             $scope.resetTimer();
           }
           $scope.$apply(function() {
@@ -108,8 +159,8 @@
         };
         $scope.startLowIntensity = function() {
           if ($scope.time === 0) {
-            $scope.lowIntensity = false;
-            $scope.setHighIntensity();
+            $scope.lowIntensity.active = false;
+            $scope.setPeriod('highIntensity');
           }
           $scope.$apply(function() {
             $scope.time--;
@@ -117,16 +168,16 @@
         };
         $scope.startHighIntensity = function() {
             if ($scope.time === 0) {
-                $scope.highIntensity = false;
+                $scope.highIntensity.active = false;
                 if ($scope.round == $scope.timer.rounds && $scope.cycle == $scope.timer.cycles) {
-                    $scope.setCoolDown();
+                    $scope.setPeriod('coolDown');
                 } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                     $scope.cycle++;
                     $scope.round = 1;
                     $scope.coolDownBeep.play();
-                    $scope.setWarmUp();
+                    $scope.setPeriod('warmUp');
                 } else {
-                    $scope.setLowIntensity();
+                    $scope.setPeriod('lowIntensity');
                     $scope.round++;
                 }
             }
@@ -134,19 +185,32 @@
                 $scope.time--;
             });
         };
+        $scope.getTimes = function() {
+            $scope.periods.forEach(function(period) {
+                var min = 0;
+                if (typeof $scope.timer[period].min == "number") {
+                    min = $scope.timer[period].min * 60;
+                }
+                var sec = $scope.timer[period].sec;
+                $scope.timer[period].time = min + sec;
+            })
+        };
         $scope.startTimer = function() {
           $scope.timerActive = true;
           $scope.lockScreen();
-          if ($scope.warmUp) {
+          if ($scope.warmUp.active) {
             $scope.countdown = setInterval($scope.startWarmUp, 1000);
           }
-          if ($scope.coolDown) {
+          if ($scope.coolDown.active) {
             $scope.countdown = setInterval($scope.startCoolDown, 1000);
           }
-          if ($scope.highIntensity) {
+          if ($scope.rest.active) {
+            $scope.countdown = setInterval($scope.startRest, 1000);
+          }
+          if ($scope.highIntensity.active) {
             $scope.countdown = setInterval($scope.startHighIntensity, 1000);
           }
-          if ($scope.lowIntensity) {
+          if ($scope.lowIntensity.active) {
             $scope.countdown = setInterval($scope.startLowIntensity, 1000);
           }
         };
@@ -156,61 +220,75 @@
           clearInterval($scope.countdown);
         };
         $scope.stepBack = function() {
-          if ($scope.warmUp) {
+          if ($scope.warmUp.active) {
             if ($scope.cycle > 1) {
-                $scope.warmUp = false;
+                $scope.warmUp.active = false;
                 $scope.cycle--;
-                $scope.setHighIntensity();
+                $scope.setPeriod('highIntensity');
                 return;
             } else {
                 $scope.resetTimer();
                 return;
             }
           };
-          if ($scope.lowIntensity) {
-            $scope.lowIntensity = false;
-            if ($scope.round == 1) {
-              $scope.setWarmUp();
+          if ($scope.lowIntensity.active) {
+            $scope.lowIntensity.active = false;
+            if ($scope.round == 1 && $scope.cycle == 1) {
+              $scope.setPeriod('warmUp');
               return;
             }
-            $scope.setHighIntensity();
+            if ($scope.round == 1 && $scope.cycle > 1) {
+                $scope.setPeriod('rest');
+                return;
+            }
+            $scope.setPeriod('highIntensity');
             $scope.round--;
             return;
           };
-          if ($scope.highIntensity) {
-            $scope.highIntensity = false;
-            $scope.setLowIntensity();
+          if ($scope.highIntensity.active) {
+            $scope.highIntensity.active = false;
+            $scope.setPeriod('lowIntensity');
             return;
           };
-          if ($scope.coolDown) {
-            $scope.coolDown = false;
-            $scope.setHighIntensity();
+          if ($scope.rest.active) {
+            $scope.rest.active = false;
+            $scope.setPeriod('highIntensity');
+            return;
+          }
+          if ($scope.coolDown.active) {
+            $scope.coolDown.active = false;
+            $scope.setPeriod('highIntensity');
             return;
           }
         };
         $scope.stepForward = function() {
-          if ($scope.warmUp) {
-            $scope.warmUp = false;
-            $scope.setLowIntensity();
+          if ($scope.warmUp.active) {
+            $scope.warmUp.active = false;
+            $scope.setPeriod('lowIntensity');
             return;
           }
-          if ($scope.lowIntensity) {
-            $scope.lowIntensity = false;
-            $scope.setHighIntensity();
+          if ($scope.rest.active) {
+            $scope.rest.active = false;
+            $scope.setPeriod('lowIntensity');
             return;
           };
-          if ($scope.highIntensity) {
-            $scope.highIntensity = false;
+          if ($scope.lowIntensity.active) {
+            $scope.lowIntensity.active = false;
+            $scope.setPeriod('highIntensity');
+            return;
+          };
+          if ($scope.highIntensity.active) {
+            $scope.highIntensity.active = false;
             if ($scope.round == $scope.timer.rounds && $scope.cycle == $scope.timer.cycles) {
-              $scope.setCoolDown();
+              $scope.setPeriod('coolDown');
               return;
             } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                 $scope.cycle++;
                 $scope.round = 1;
-                $scope.setWarmUp();
+                $scope.setPeriod('rest');
                 return;
             }
-            $scope.setLowIntensity();
+            $scope.setPeriod('lowIntensity');
             $scope.round++;
             return;
           };
@@ -220,15 +298,59 @@
           $scope.timerActive = false;
           $scope.round = 1;
           $scope.cycle = 1;
-          $scope.lowIntensity = false;
-          $scope.highIntensity = false;
-          $scope.coolDown = false;
-          $scope.warmUp = true;
-          $scope.time = $scope.timer.warmUpTime;
+          $scope.lowIntensity.active = false;
+          $scope.highIntensity.active = false;
+          $scope.coolDown.active = false;
+          $scope.warmUp.active = true;
+          $scope.time = $scope.timer.warmUp.time;
+        };
+        $scope.makeId = function() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        
+            for( var i=0; i < 5; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+        
+            return text;
+        };
+        $scope.openTimer = function(id) {
+            $indexedDB.openStore('timers', function(timers) {
+                timers.find(id)
+                .then(function(data) {
+                    $scope.timer = data;
+                    $scope.getTimes();
+                    $scope.resetTimer();
+                    $scope.showTimerInterface = true;
+                })
+            })
+        }
+        $scope.closeTimer = function() {
+            $scope.showTimerInterface = false;
+        }
+        $scope.deleteTimer = function(item) {
+            item.removed = true;
+            setTimeout(function() {
+                $indexedDB.openStore('timers', function(timers) {
+                    var result = timers.delete(item.id)
+                    .then(function(e) {
+                        $scope.setTimers();
+                    })
+                })
+            }, 500);
         };
         $scope.saveTimer = function() {
-            $cookies.putObject("timer", $scope.timer);
+            $scope.newTimer.id = $scope.makeId();
+            $indexedDB.openStore('timers', function(timers) {
+                var result = timers.insert($scope.newTimer)
+                .then(function(e) {
+                    $scope.newTimer = {};
+                    $scope.setTimers();
+                })
+            })
         };
+        $scope.getTimers = function() {
+            return $scope.timers;
+        }
         $scope.getNumberRange = function(number) {
             range = [];
             for (var i = 0; i <= number; i++) {
@@ -236,6 +358,17 @@
             }
             return range
         }
-
+        $scope.openNewTimer = function() {
+            $scope.newTimerClosed = false;
+            $scope.newTimerOpen = true;
+        }
+        $scope.saveNewTimer = function() {
+            $scope.saveTimer();
+            $scope.closeNewTimer();
+        }
+        $scope.closeNewTimer = function() {
+            $scope.newTimerOpen = false;
+            $scope.newTimerClosed = true;
+        }
     }]);
 })();

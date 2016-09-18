@@ -20,10 +20,105 @@ a:link, a:hover, a:visited, a:active {
 	color: inherit;
 }
 
-.timer-box {
-	position: relative;
+.no-timers {
+    padding: 20px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5em;
+}
+
+.timers {
+    overflow: hidden;
+    position: relative;
+    margin-top: 60px;
+}
+
+.timer {
+    border-bottom: 1px solid #BDBDBD;
+    max-height: 200px;
+    padding:2px;
+    opacity: 1;
+}
+
+.timer h2 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.timer a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.timer p {
+    color: #757575;
+    font-size: 1em;
+    font-style: italic;
+}
+
+.timer > div {
+    background-color: red;
+}
+
+.swiper {
+    background: #fff;
+    opacity: 1 !important;
+    position: relative;
+}
+
+.removed .swiper {
+    left: 100% !important;
+}
+
+@keyframes removeTimer {
+    0% {max-height: 200px; opacity: 1;}
+    100% {max-height: 0; opacity: 0;}
+}
+
+.removed {
+    animation: removeTimer 0.25s linear;
+    max-height: 0;
+    opacity: 0;
+}
+
+.undo-div {
+    color: #fff;
+    top: 50% !important;
+    left: initial !important;
+    right: 30px !important;
+    transform: translateY(-50%);
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    /* padding-left: 50px; */
+    width: auto !important;
+}
+
+.timer-interface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+}
+
+.timer-container {
+    position: relative;
+    top: 0;
+    height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.timer-middle {
+	position: absolute;
 	top: 50%;
-	-webkit-transform: translateY(-50%);
+	left: 0;
+	right: 0;
 	transform: translateY(-50%);
 	width: 90%;
 	margin: auto;
@@ -36,31 +131,24 @@ a:link, a:hover, a:visited, a:active {
 	margin: 20px auto;
 }
 
-.timer-controls {
-	text-align: center;
-	font-size: 6vh;
-	width: 30vw;
-	margin: auto;
+.white {
+    background-color: #FFFFFF;
 }
 
 .yellow {
-	background-color: #ffff00;
-	color: #8c8c00;
+	background-color: #FFEB3B;
 }
 
 .red {
-	background-color: #ff3333;
-	color: #951e1e;
+	background-color: #F44336;
 }
 
 .green {
-	background-color: #49e838;
-	color: #1e5f17;
+	background-color: #4CAF50;
 }
 
 .blue {
-	background-color: #00e6d7;
-	color: #008077;
+	background-color: #2196F3;
 }
 
 .yellow #save {
@@ -130,16 +218,21 @@ header h1 {
     margin: 4px 0;
 }
 
-.menu-bottom {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 10vh;
+.timer-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
 }
 
 .menu-button {
-	margin: 0 15px;
-	font-size: 6vh;
+    font-weight: 100;
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #212121;
+    padding: 14px 20px;
+    display: inline-block;
 }
 
 .settings-menu {
@@ -215,7 +308,7 @@ button.add-timer {
 }
 
 .top-menu {
-    position: fixed;
+    position: absolute;
     top: 0;
     height: 60px;
     border-bottom: 1px solid #BDBDBD;
@@ -224,54 +317,63 @@ button.add-timer {
     box-shadow: 0 0 3px 0 #BDBDBD;
 }
 
-.top-menu a {
-    font-weight: 100;
-    text-decoration: none;
-    font-size: 1.5em;
-    color: #212121;
-    padding: 14px 20px;
-    display: inline-block;
-}
-
 .top-menu a:last-of-type {
     float: right;
 }
 
 .new-timer {
     position: absolute;
-    top: 0;
+    top: 100%;
     padding: 0;
     width: 100vw;
     z-index: 99;
     background: #fff;
     height: 100vh;
+    opacity: 0;
 }
 
 #timer-setup {
 	margin-top: 70px;
 }
 
-#timer-setup input, #timer-setup select {
+#timer-setup input, #timer-setup textarea, #timer-setup select {
 	border-radius: 3px;
 	border: 0;
 	border-bottom: solid 1px #BDBDBD;
 	width: 100%;
 	padding: 10px 20px;
 	font-size: 1.25em;
+        font-family: Open Sans, sans-serif;
+        box-sizing: border-box;
+        display: block;
 }
+
+.select-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.select-wrapper span {
+    width: 2%;
+    font-weight: bold;
+    text-align: center;
+}
+.select-wrapper select, .select-wrapper span {
+    display: table-cell;
+}
+
+.min {text-align: left;}
+.sec {text-align: right;}
 
 #back {float: left;}
 #next {float: right;}
 
-#save {
-	text-align: center;
-	text-decoration: none;
-	margin: 25px auto;
-}
-
 #timer-name {
-	line-height: 60px;
-	text-decoration: none;
+    line-height: 60px;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 60px;
+    font-size: 1.5em;
 }
 
 #timer-menu-btn {
@@ -279,7 +381,10 @@ button.add-timer {
 }
 
 #timer-reset-btn {
-	float: right;
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 @keyframes slideIn {
     from {left: -100%;}
@@ -303,13 +408,50 @@ button.add-timer {
     animation: slideOut 0.25s ease-in;
     left: -100%;
 }
+@keyframes slideUp {
+    from {top: 100%; opacity: 0;}
+    to {top: 0; opacity: 1;}
+}           
+@keyframes slideDown {
+    from {top: 0; opacity: 1;}
+    to {top: 100%; opacity: 0;}
+}           
+.slideUp {
+    -moz-animation: slideUp 0.1s ease-in;
+    -webkit-animation: slideUp 0.1s ease-in;
+    -o-animation: slideUp 0.1s ease-in;
+    animation: slideUp 0.1s ease-in;
+    top: 0;
+    opacity: 1;
+}           
+.slideDown {
+    -moz-animation: slideDown 0.1s ease-out;
+    -webkit-animation: slideDown 0.1s ease-out;
+    -o-animation: slideDown 0.1s ease-out;
+    animation: slideDown 0.1s ease-out;
+    top: 100%;
+    opacity: 0;
+}
+@keyframes loaderSpin {
+    100% {transform: rotate(360deg);}
+}
+.loader {
+    animation: loaderSpin 1s linear infinite;
+    width: 50px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+}
+
+.visible {
+    opacity: 0.75;
+    transform: rotate(0deg);
+}
+
 .visible {
     opacity: 0.75;
     z-index: 999;
 }
 
-@media all and (max-width: 768px) {
-	.timer-controls {
-		width: 75vw;
-	}
-}
