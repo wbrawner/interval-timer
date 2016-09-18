@@ -56,7 +56,8 @@
         </header>
         <div class="timers">
             <img class="loader" src="img/spinner.png" ng-hide="timersLoaded" />
-            <div class="no-timers" ng-show="noTimers">
+            <div class="loader-overlay" ng-hide="timersLoaded"></div>
+            <div class="no-timers" ng-hide="noTimers">
                 <h3>It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started!</h3>
             </div>
             <div class="timer animate-repeat" ng-repeat="timerInstance in getTimers()" item-swipe="" on-remove="deleteTimer(timerInstance)" ng-class="{'removed': timerInstance.removed}">

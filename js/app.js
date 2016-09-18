@@ -13,20 +13,36 @@ if (!window.indexedDB) {
         })
     });
     var defaultTimer = {
-        "name" : "Tabata",
-        "description" : "A short, yet very intense workout best completed with multiple cycles",
-        "warmUp.min": 5,
-        "warmUp.sec": 0,
-        "highIntensity.min" : 0,
-        "highIntensity.sec" : 20,
-        "lowIntensity.min" : 0,
-        "lowIntensity.sec" : 10,
-        "rest.min" : 5,
-        "rest.sec" : 0,
-        "coolDown.min" : 5,
-        "coolDown.sec" : 0,
-        "rounds" : 8,
-        "cycles": 6
+        "id": 0,
+        "name": "",
+        "description": "",
+        "warmUp" : {
+            "min": 0,
+            "sec": 0,
+            "time": 0
+        },
+        "highIntensity" : {
+            "min": 0,
+            "sec": 0,
+            "time": 0
+        },
+        "lowIntensity" : {
+            "min": 0,
+            "sec": 0,
+            "time": 0
+        },
+        "coolDown" : {
+            "min": 0,
+            "sec": 0,
+            "time": 0
+        },
+        "rest" : {
+            "min": 0,
+            "sec": 0,
+            "time": 0
+        },
+        "rounds": 1,
+        "cycles": 1
     };
     app.controller('timerCtrl', ['$scope', '$cookies', '$indexedDB', function($scope, $cookies, $indexedDB) {
         $scope.defaults = defaultTimer;
@@ -61,17 +77,18 @@ if (!window.indexedDB) {
             $indexedDB.openStore('timers', function(timers) {
                 timers.getAll()
                 .then(function(data) {
-                    $scope.timersLoaded = true;
                     $scope.timers = data;
                     if (data.length == 0) {
-                        $scope.noTimers = true;
-                    } else {
                         $scope.noTimers = false;
+                    } else {
+                        $scope.noTimers = true;
                     }
+                    $scope.timersLoaded = true;
                 })
             })
         }
         $scope.setTimers();
+        console.log("noTimers: " + $scope.noTimers);
         $scope.timer = {};
         $scope.config = {};
         $scope.initObj = new Promise(function(res, rej) {
@@ -95,7 +112,10 @@ if (!window.indexedDB) {
         $scope.newTimerOpen = false;
         $scope.newTimerClosed = false;
         $scope.showTimerInterface = false;
-        $scope.setPeriod = function(period, playBeep = true) {
+        $scope.setPeriod = function(period, playBeep) {
+            if (typeof period == "undefined") {
+                period = true;
+            }
             clearInterval($scope.countdown);
             $scope[period].active = true;
             $scope.time = $scope.timer[period].time;
@@ -188,7 +208,8 @@ if (!window.indexedDB) {
         $scope.getTimes = function() {
             $scope.periods.forEach(function(period) {
                 var min = 0;
-                if (typeof $scope.timer[period].min == "number") {
+                console.log(period)
+                if (typeof $scope.timer[period].min == "number" && $scope.timer[period].min > 0) {
                     min = $scope.timer[period].min * 60;
                 }
                 var sec = $scope.timer[period].sec;
@@ -362,9 +383,27 @@ if (!window.indexedDB) {
             $scope.newTimerClosed = false;
             $scope.newTimerOpen = true;
         }
+        $scope.validateNewTimer = function(newTimer) {
+            timerSkel = $scope.defaults;
+            angular.merge(timerSkel, newTimer);
+            if (timerSkel.rounds < 1) {
+                timerSkel.rounds = 1;
+            }
+            if (timerSkel.cycles < 1) {
+                timerSkel.cycles = 1;
+            }
+            console.log(timerSkel)
+            return new Promise(function(res, rej) {
+                res(timerSkel);
+            })
+        }
         $scope.saveNewTimer = function() {
-            $scope.saveTimer();
-            $scope.closeNewTimer();
+            $scope.validateNewTimer($scope.newTimer)
+                .then(function(newTimer) {
+                    $scope.newTimer = newTimer;
+                    $scope.saveTimer();
+                    $scope.closeNewTimer();
+                })
         }
         $scope.closeNewTimer = function() {
             $scope.newTimerOpen = false;
