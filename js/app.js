@@ -99,9 +99,11 @@ if (!window.indexedDB) {
             res($scope.config);
         });
         $scope.initObj.then(function() {
-            $scope.config.lowIntensity.beep = new Audio('audio/beep-09.mp3');
-            $scope.config.highIntensity.beep = new Audio('audio/button-42(1).mp3');
-            $scope.config.coolDown.beep = new Audio('audio/beep-10.mp3');
+            $scope.config.warmUp.beep = new Audio('audio/warm.mp3');
+            $scope.config.lowIntensity.beep = new Audio('audio/low.mp3');
+            $scope.config.highIntensity.beep = new Audio('audio/high.mp3');
+            $scope.config.rest.beep = new Audio('audio/rest.mp3');
+            $scope.config.coolDown.beep = new Audio('audio/cool.mp3');
             $scope.warmUp.active = true;
         })
         $scope.round = 1;
@@ -126,7 +128,7 @@ if (!window.indexedDB) {
             $scope.startTimer();
         }
         $scope.setWarmUp = function() {
-            $scope.setPeriod('warmUp', false)
+            $scope.setPeriod('warmUp');
         }
         $scope.setCoolDown = function() {
           clearInterval($scope.countdown);
@@ -169,8 +171,8 @@ if (!window.indexedDB) {
         };
         $scope.startRest = function() {
           if ($scope.time === 0) {
-            $scope.highIntensity.active = false;
-            $scope.resetTimer();
+            $scope.rest.active = false;
+            $scope.setPeriod('lowIntensity');
           }
           $scope.$apply(function() {
             $scope.time--;
@@ -193,8 +195,7 @@ if (!window.indexedDB) {
                 } else if ($scope.round == $scope.timer.rounds && $scope.cycle < $scope.timer.cycles) {
                     $scope.cycle++;
                     $scope.round = 1;
-                    $scope.coolDownBeep.play();
-                    $scope.setPeriod('warmUp');
+                    $scope.setPeriod('rest');
                 } else {
                     $scope.setPeriod('lowIntensity');
                     $scope.round++;
