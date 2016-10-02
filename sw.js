@@ -3,9 +3,11 @@ self.addEventListener('install', function(e) {
    caches.open('wbrawner-interval-timer').then(function(cache) {
      return cache.addAll([
         '/',
-        '/audio/beep-09.mp3',
-        '/audio/beep-10.mp3',
-        '/audio/button-42(1).mp3',
+        '/audio/cool.mp3',
+        '/audio/high.mp3',
+        '/audio/low.mp3',
+        '/audio/rest.mp3',
+        '/audio/warm.mp3',
         '/browserconfig.xml',
         '/contributors.txt',
         '/css/addtohomescreen.css',
