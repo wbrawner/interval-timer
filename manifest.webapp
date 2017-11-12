@@ -5,7 +5,7 @@
     }
   },
   "author": "William Brawner",
-  "chrome": { "navigation": false }
+  "chrome": { "navigation": false },
   "default_locale": "en",
   "description": "An interval timer that allows you to customize the intervals",
   "display": "standalone",
@@ -28,7 +28,9 @@
   "launch_path": "/index.html",
   "manifest_version": 2,
   "name": "Interval Timer",
+  "short_name": "Interval Timer",
+  "background_color": "#FFFFFF",
   "offline_enabled": true,
   "theme_color": "#fff9c4",
-  "version": "2.0",
+  "version": "2.0"
 }
