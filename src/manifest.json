@@ -7,6 +7,7 @@
   "author": "William Brawner",
   "chrome": { "navigation": false },
   "default_locale": "en",
+  "start_url": "https://interval-timer.brawner.dev",
   "description": "An interval timer that allows you to customize the intervals",
   "display": "standalone",
   "developer": {
