@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="origin-trial" content="AloaghywgheoF88lzr+tXh8sYHKDmcUK99BMmxF+X/Pxfa6HFXIeaGzErWIpUK3QccLF0NLA9Tt7oqZlW7e9cwsAAABceyJvcmlnaW4iOiJodHRwczovL2ludGVydmFsLXRpbWVyLmJyYXduZXIuZGV2OjQ0MyIsImZlYXR1cmUiOiJXYWtlTG9jayIsImV4cGlyeSI6MTU5Mjc3OTIwNH0=">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <script type="text/javascript" src="js/angular.min.js"></script>
         <script type="text/javascript" src="js/angular-cookies.min.js"></script>
         <script type="text/javascript" src="js/item-swipe.js"></script>
@@ -47,11 +46,9 @@
     </head>
     <body ng-controller="timerCtrl as timer">
         <header>
-            <div class="hamburger-icon" ng-click="settingsOpen = true; closeSettings = false;">
-                <span></span>
-                <span id="middle"></span>
-                <span></span>
-            </div>
+            <a href="#" class="hamburger-icon" ng-click="settingsOpen = true; closeSettings = false;">
+                <img class="button menu-icon" src="img/menu.svg" />
+            </a>
             <h1>Interval Timer</h1>
         </header>
         <div class="timers">
@@ -81,10 +78,10 @@
                     </div>
                 </div>
                 <div class="timer-bottom">
-                    <a id="back" ng-click="stepBack()" class="menu-button" href="#"><i class="fa fa-step-backward"></i></a>
-                    <a id="play" ng-hide="timerActive" ng-click="startTimer()" class="menu-button" href="#"><i class="fa fa-play"></i></a>
-                    <a id="pause" ng-show="timerActive" ng-click="pauseTimer()" class="menu-button" href="#"><i class="fa fa-pause"></i></a>
-                    <a id="next" ng-click="stepForward()" class="menu-button" href="#"><i class="fa fa-step-forward"></i></a>
+                    <a id="back" ng-click="stepBack()" class="menu-button" href="#"><img class="timer-control play" src="./img/skip-back.svg" /></a>
+                    <a id="play" ng-hide="timerActive" ng-click="startTimer()" class="menu-button" href="#"><img class="timer-control play" src="./img/play.svg" /></a>
+                    <a id="pause" ng-show="timerActive" ng-click="pauseTimer()" class="menu-button" href="#"><img class="timer-control pause" src="./img/pause.svg" /></a>
+                    <a id="next" ng-click="stepForward()" class="menu-button" href="#"><img class="timer-control play" src="./img/skip-forward.svg" /></a>
                 </div>
             </div>
         </div>
@@ -92,7 +89,7 @@
         <div ng-class="{ 'slideIn': settingsOpen, 'slideOut': closeSettings }" class="settings-menu">
             <img src="./img/menu-logo.png" />
             <div class="fixed bottom">
-                <a href="https://wbrawner.com/contact/" target="_blank"><i class="fa fa-question-circle"></i>Help &amp; feedback</a>
+                <a href="https://wbrawner.com/contact/" target="_blank"><span class="question-circle">?</span>Help &amp; feedback</a>
             </div>
         </div>
         <div class="new-timer" ng-class="{ 'slideUp': newTimerOpen, 'slideDown': newTimerClosed }">
