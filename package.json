@@ -1,0 +1,18 @@
+{
+  "name": "interval-timer",
+  "version": "2.0.0",
+  "description": "A simple interval timer PWA",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbrawner/interval-timer.git"
+  },
+  "author": "William Patrick Brawner <me@wbrawner.com> (https://wbrawner.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wbrawner/interval-timer/issues"
+  },
+  "homepage": "https://github.com/wbrawner/interval-timer#readme"
+}
