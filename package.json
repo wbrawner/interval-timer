@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "A simple interval timer PWA",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "http-server src"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wbrawner/interval-timer/issues"
   },
-  "homepage": "https://github.com/wbrawner/interval-timer#readme"
+  "homepage": "https://github.com/wbrawner/interval-timer#readme",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
 }
