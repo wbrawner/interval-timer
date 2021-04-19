@@ -54,6 +54,14 @@ let _state = {
 let db = null;
 let timerStore = null;
 
+function initApp() {
+  Array.from(document.getElementsByClassName('duration')).forEach(input => {
+    console.log(input)
+    // input.addEventListener('beforeinput', maskDuration);
+  });
+  loadTimers();
+}
+
 function loadTimers() {
   let state = copyState();
   const dbRequest = window.indexedDB.open('interval-timer', 1);
@@ -120,6 +128,28 @@ function cancelEdit() {
   updateState({
     editingTimer: false
   })
+}
+
+function maskDuration(event) {
+  const input = event.target;
+  let formatted = input.value.replace(/[^\d]/g, '');
+  if (event.inputType === "deleteContentBackward") {
+    formatted = formatted.slice(0, formatted.length - 1)
+    formatted = ("000000" + formatted).slice(-6)
+  } else if (event.inputType === 'insertText' && event.data.match(/\d/)) {
+    formatted = ("000000" + formatted).slice(-6)
+  }
+  input.value = `${formatted.slice(0, 2)}h ${formatted.slice(2, 4)}m ${formatted.slice(4, 6)}s`;
+}
+
+function isBeforeInputEventAvailable() {
+  return window.InputEvent && typeof InputEvent.prototype.getTargetRanges === "function";
+}
+
+function handleDurationCaret(event) {
+  const input = event.target;
+  const position = Math.min(11, input.value.length);
+  input.setSelectionRange(position, position);
 }
 
 function toggleTimer() {

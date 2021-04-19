@@ -1,123 +1,139 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <script type="text/javascript" src="js/app.js"></script>
-        <title>Interval Timer</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
-        <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
-        <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="/img/favicon-194x194.png" sizes="194x194">
-        <link rel="shortcut icon" type="image/png" href="/img/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="/img/manifest.json">
-        <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ffeb3b">
-        <link rel="icon" href="/img/favicon.ico">
-        <meta name="msapplication-TileColor" content="#ffc40d">
-        <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
-        <meta name="msapplication-config" content="/img/browserconfig.xml">
-        <meta name="theme-color" content="#ffeb3b">
-    </head>
-    <body onload="loadTimers()">
-        <header>
-            <h1>Interval Timer</h1>
-        </header>
-        <div id="loader">
-            <img class="loader" src="img/spinner.png" />
-            <div class="loader-overlay"></div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript" src="js/app.js"></script>
+    <title>Interval Timer</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicon-194x194.png" sizes="194x194">
+    <link rel="shortcut icon" type="image/png" href="/img/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/img/manifest.json">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ffeb3b">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
+    <meta name="msapplication-config" content="/img/browserconfig.xml">
+    <meta name="theme-color" content="#ffeb3b">
+</head>
+
+<body onload="initApp()">
+    <header>
+        <h1>Interval Timer</h1>
+    </header>
+    <div id="loader">
+        <img class="loader" src="img/spinner.png" />
+        <div class="loader-overlay"></div>
+    </div>
+    <div class="no-timers">
+        <p style="max-width: 600px;">It looks like you haven't configured any timers yet. Click on the orange "+" icon
+            below to get started!</p>
+    </div>
+    <div class="timers">
+        <div class="timer animate-repeat">
+            <a href="javascript:void(0)">
+                <h2>Timer Name</h2>
+                <p>Timer description</p>
+            </a>
         </div>
-        <div class="no-timers">
-            <p style="max-width: 600px;">It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started!</p>
-        </div>
-        <div class="timers">
-            <div class="timer animate-repeat">
-                <a href="javascript:void(0)">
-                    <h2>Timer Name</h2>
-                    <p>Timer description</p>
-                </a>
+    </div>
+    <div class="timer-interface">
+        <div class="timer-container">
+            <div class="timer-top">
+                <a href="#" id="timer-menu-btn" class="menu-button">&#10005</a>
+                <h2 id="timer-name">Timer Name</h2>
+                <a id="timer-reset-btn" href="#" class="menu-button"><i class="fa fa-refresh"></i></a>
             </div>
-        </div>
-        <div class="timer-interface">
-            <div class="timer-container">
-                <div class="timer-top">
-                    <a href="#" id="timer-menu-btn" class="menu-button">&#10005</a>
-                    <h2 id="timer-name">Timer Name</h2>
-                    <a id="timer-reset-btn" href="#" class="menu-button"><i class="fa fa-refresh"></i></a>
-                </div>
-                <div class="timer-middle">
-                    <div class="timer-info">
-                        <p class="time-info">Round: round/timer.rounds - Cycle: cycle/timer.cycles</p>
-                        <p class="time">{{ time * 1000 | date : "mm:ss" }}</p>
-                    </div>
-                </div>
-                <div class="timer-bottom">
-                    <a id="back" class="menu-button" href="#"><img class="timer-control play" src="./img/skip-back.svg" /></a>
-                    <a id="play" class="menu-button" href="#"><img class="timer-control play" src="./img/play.svg" /></a>
-                    <a id="pause" class="menu-button" href="#"><img class="timer-control pause" src="./img/pause.svg" /></a>
-                    <a id="next" class="menu-button" href="#"><img class="timer-control play" src="./img/skip-forward.svg" /></a>
+            <div class="timer-middle">
+                <div class="timer-info">
+                    <p class="time-info">Round: round/timer.rounds - Cycle: cycle/timer.cycles</p>
+                    <p class="time">{{ time * 1000 | date : "mm:ss" }}</p>
                 </div>
             </div>
-        </div>
-        <div class="new-timer">
-            <div class="top-menu">
-                <button class="menu-button" onclick="cancelEdit()" >&#10005;</a>
-                <button class="menu-button" onclick="saveTimer()" >&#10003;</a>
+            <div class="timer-bottom">
+                <a id="back" class="menu-button" href="#"><img class="timer-control play"
+                        src="./img/skip-back.svg" /></a>
+                <a id="play" class="menu-button" href="#"><img class="timer-control play" src="./img/play.svg" /></a>
+                <a id="pause" class="menu-button" href="#"><img class="timer-control pause" src="./img/pause.svg" /></a>
+                <a id="next" class="menu-button" href="#"><img class="timer-control play"
+                        src="./img/skip-forward.svg" /></a>
             </div>
-            <form id="timer-setup" name="timer-setup">
-                <div class="input-wrapper">
-                    <label for="timerName">Name:</label>
-                    <input type="text" name="timerName">
-                </div>
-                <div class="input-wrapper">
-                    <label for="timerDescription">Description:</label>
-                    <textarea name="timerDescription"></textarea>
-                </div>
-                <div class="input-wrapper">
-                    <label for="warmUp">Warm-up:</label>
-                    <input type="number" name="warmUp" />
-                </div>
-                <div class="input-wrapper">
-                    <label for="low">Low-intensity:</label>
-                    <input type="number" name="low" />
-                </div>
-                <div class="input-wrapper">
-                    <label for="high">High-intensity:</label>
-                    <input type="number" name="high" />
-                </div>
-                <div class="input-wrapper">
-                    <label for="rest">Rest:</label>
-                    <input type="number" name="rest" />
-                </div>
-                <div class="input-wrapper">
-                    <label for="cool">Cooldown:</label>
-                    <input type="number" name="cool" />
-                </div>
-                <div class="input-wrapper">
-                    <label for="sets">Sets:</label>
-                    <input type="number" name="sets">
-                </div>
-                <div class="input-wrapper">
-                    <label for="rounds">Rounds:</label>
-                    <input type="number" name="rounds">
-                </div>
-            </form>
         </div>
-        <button class="add-timer" onclick="editTimer()">+</button>
-        <script async>
-        if('serviceWorker' in navigator) {
-          navigator.serviceWorker
-                   .register('/sw.js')
-                   .then(function() { console.log("Service Worker Registered"); });
+    </div>
+    <div class="new-timer">
+        <div class="top-menu">
+            <button class="menu-button" onclick="cancelEdit()">&#10005;</a>
+                <button class="menu-button" onclick="saveTimer()">&#10003;</a>
+        </div>
+        <form id="timer-setup" name="timer-setup">
+            <div class="input-wrapper">
+                <label for="timerName">Name:</label>
+                <input type="text" name="timerName">
+            </div>
+            <div class="input-wrapper">
+                <label for="timerDescription">Description:</label>
+                <textarea name="timerDescription"></textarea>
+            </div>
+            <div class="input-wrapper">
+                <label for="warmUp">Warm-up:</label>
+                <input class="duration" type="text" name="warmUp" onmouseup="handleDurationCaret(event)"
+                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
+                    value="00h 00m 00s" />
+            </div>
+            <div class="input-wrapper">
+                <label for="low">Low-intensity:</label>
+                <input class="duration" type="text" name="low" onmouseup="handleDurationCaret(event)"
+                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
+                    value="00h 00m 00s" />
+            </div>
+            <div class="input-wrapper">
+                <label for="high">High-intensity:</label>
+                <input class="duration" type="text" name="high" onmouseup="handleDurationCaret(event)"
+                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
+                    value="00h 00m 00s" />
+            </div>
+            <div class="input-wrapper">
+                <label for="rest">Rest:</label>
+                <input class="duration" type="text" name="rest" onmouseup="handleDurationCaret(event)"
+                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
+                    value="00h 00m 00s" />
+            </div>
+            <div class="input-wrapper">
+                <label for="cool">Cooldown:</label>
+                <input class="duration" type="text" name="cool" onmouseup="handleDurationCaret(event)"
+                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
+                    value="00h 00m 00s" />
+            </div>
+            <div class="input-wrapper">
+                <label for="sets">Sets:</label>
+                <input type="number" name="sets" value="1">
+            </div>
+            <div class="input-wrapper">
+                <label for="rounds">Rounds:</label>
+                <input type="number" name="rounds" value="1">
+            </div>
+        </form>
+    </div>
+    <button class="add-timer" onclick="editTimer()">+</button>
+    <script async>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/sw.js')
+                .then(function () { console.log("Service Worker Registered"); });
         }
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
