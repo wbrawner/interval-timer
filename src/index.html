@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="en-US">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,19 +27,18 @@
         <meta name="msapplication-config" content="/img/browserconfig.xml">
         <meta name="theme-color" content="#ffeb3b">
     </head>
-    <body>
+    <body onload="loadTimers()">
         <header>
-            <a href="#" class="hamburger-icon">
-                <img class="button menu-icon" src="img/menu.svg" />
-            </a>
             <h1>Interval Timer</h1>
         </header>
-        <div class="timers">
+        <div id="loader">
             <img class="loader" src="img/spinner.png" />
             <div class="loader-overlay"></div>
-            <div class="no-timers">
-                <h3>It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started!</h3>
-            </div>
+        </div>
+        <div class="no-timers">
+            <p style="max-width: 600px;">It looks like you haven't configured any timers yet. Click on the orange "+" icon below to get started!</p>
+        </div>
+        <div class="timers">
             <div class="timer animate-repeat">
                 <a href="javascript:void(0)">
                     <h2>Timer Name</h2>
@@ -68,89 +67,51 @@
                 </div>
             </div>
         </div>
-        <div class="settings-menu-overlay" ></div>
-        <div class="settings-menu">
-            <img src="./img/menu-logo.png" />
-            <div class="fixed bottom">
-                <a href="https://wbrawner.com/contact/" target="_blank"><span class="question-circle">?</span>Help &amp; feedback</a>
-            </div>
-        </div>
-        <div class="new-timer" >
+        <div class="new-timer">
             <div class="top-menu">
-                <a class="menu-button" href="javascript:void(0)" >&#10005;</a>
-                <a class="menu-button" href="javascript:void(0)" >&#10003;</a>
+                <button class="menu-button" onclick="cancelEdit()" >&#10005;</a>
+                <button class="menu-button" onclick="saveTimer()" >&#10003;</a>
             </div>
             <form id="timer-setup" name="timer-setup">
                 <div class="input-wrapper">
-                    <input type="text" placeholder="Name">
+                    <label for="timerName">Name:</label>
+                    <input type="text" name="timerName">
                 </div>
                 <div class="input-wrapper">
-                    <textarea placeholder="Description"></textarea>
-                </div>
-                <div class="select-wrapper">
-                    <select class="min" >
-                        <option value="" disabled selected>Warm-up Min</option>
-                    </select>
-                    <span style="width: 2%;">
-                        :
-                    </span>
-                    <select class="sec" >
-                        <option value="" disabled selected>Warm-up Sec</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select class="min" >
-                        <option value="" disabled selected>Low-intensity Min</option>
-                    </select>
-                    <span style="width: 2%;">
-                        :
-                    </span>
-                    <select class="sec" >
-                        <option value="" disabled selected>Low-intensity Sec</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select class="min" >
-                        <option value="" disabled selected>High-intensity Min</option>
-                    </select>
-                    <span style="width: 2%;">
-                        :
-                    </span>
-                    <select class="sec" >
-                        <option value="" disabled selected>High-intensity Sec</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select class="min" >
-                        <option value="" disabled selected>Rest Min</option>
-                    </select>
-                    <span style="width: 2%;">
-                        :
-                    </span>
-                    <select class="sec" >
-                        <option value="" disabled selected>Rest Sec</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    <select class="min" >
-                        <option value="" disabled selected>CoolDown Min</option>
-                    </select>
-                    <span style="width: 2%;">
-                        :
-                    </span>
-                    <select class="sec" >
-                        <option value="" disabled selected>CoolDown Sec</option>
-                    </select>
+                    <label for="timerDescription">Description:</label>
+                    <textarea name="timerDescription"></textarea>
                 </div>
                 <div class="input-wrapper">
-                    <input type="number" placeholder="Rounds">
+                    <label for="warmUp">Warm-up:</label>
+                    <input type="number" name="warmUp" />
                 </div>
                 <div class="input-wrapper">
-                    <input type="number" placeholder="Cycles">
+                    <label for="low">Low-intensity:</label>
+                    <input type="number" name="low" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="high">High-intensity:</label>
+                    <input type="number" name="high" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="rest">Rest:</label>
+                    <input type="number" name="rest" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="cool">Cooldown:</label>
+                    <input type="number" name="cool" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="sets">Sets:</label>
+                    <input type="number" name="sets">
+                </div>
+                <div class="input-wrapper">
+                    <label for="rounds">Rounds:</label>
+                    <input type="number" name="rounds">
                 </div>
             </form>
         </div>
-        <button class="add-timer" onclick="openNewTimer()">+</button>
+        <button class="add-timer" onclick="editTimer()">+</button>
         <script async>
         if('serviceWorker' in navigator) {
           navigator.serviceWorker
