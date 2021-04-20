@@ -88,41 +88,66 @@
             </div>
             <div class="input-wrapper">
                 <label for="warmUp">Warm-up:</label>
-                <input class="duration" type="text" name="warmUp" onmouseup="handleDurationCaret(event)"
-                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
-                    value="00h 00m 00s" />
+                <div class="duration-wrapper">
+                    <input class="duration" type="number" name="warmUpHours" placeholder="00" />
+                    <span class="duration-amount">h</span>
+                    <input class="duration" type="number" name="warmUpMins" placeholder="00" />
+                    <span class="duration-amount">m</span>
+                    <input class="duration" type="number" name="warmUpSecs" placeholder="00" />
+                    <span class="duration-amount">s</span>
+                </div>
             </div>
             <div class="input-wrapper">
                 <label for="low">Low-intensity:</label>
-                <input class="duration" type="text" name="low" onmouseup="handleDurationCaret(event)"
-                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
-                    value="00h 00m 00s" />
+                <div class="duration-wrapper">
+                    <input class="duration" type="number" name="lowHours" placeholder="00" />
+                    <span class="duration-amount">h</span>
+                    <input class="duration" type="number" name="lowMins" placeholder="00" />
+                    <span class="duration-amount">m</span>
+                    <input class="duration" type="number" name="lowSecs" placeholder="00" />
+                    <span class="duration-amount">s</span>
+                </div>
             </div>
             <div class="input-wrapper">
                 <label for="high">High-intensity:</label>
-                <input class="duration" type="text" name="high" onmouseup="handleDurationCaret(event)"
-                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
-                    value="00h 00m 00s" />
+                <div class="duration-wrapper">
+                    <input class="duration" type="number" name="highHours" placeholder="00" />
+                    <span class="duration-amount">h</span>
+                    <input class="duration" type="number" name="highMins" placeholder="00" />
+                    <span class="duration-amount">m</span>
+                    <input class="duration" type="number" name="highSecs" placeholder="00" />
+                    <span class="duration-amount">s</span>
+                </div>
             </div>
             <div class="input-wrapper">
                 <label for="rest">Rest:</label>
-                <input class="duration" type="text" name="rest" onmouseup="handleDurationCaret(event)"
-                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
-                    value="00h 00m 00s" />
+                <div class="duration-wrapper">
+                    <input class="duration" type="number" name="restHours" placeholder="00" />
+                    <span class="duration-amount">h</span>
+                    <input class="duration" type="number" name="restMins" placeholder="00" />
+                    <span class="duration-amount">m</span>
+                    <input class="duration" type="number" name="restSecs" placeholder="00" />
+                    <span class="duration-amount">s</span>
+                </div>
             </div>
             <div class="input-wrapper">
                 <label for="cool">Cooldown:</label>
-                <input class="duration" type="text" name="cool" onmouseup="handleDurationCaret(event)"
-                    oninput="maskDuration(event)" onkeyup="handleDurationCaret(event)" regex="\d{2}h \d{2}m \d{2}s"
-                    value="00h 00m 00s" />
+                <div class="duration-wrapper">
+                    <input class="duration" type="number" name="coolHours" placeholder="00" />
+                    <span class="duration-amount">h</span>
+                    <input class="duration" type="number" name="coolMins" placeholder="00" />
+                    <span class="duration-amount">m</span>
+                    <input class="duration" type="number" name="coolSecs" placeholder="00" />
+                    <span class="duration-amount">s</span>
+                </div>
             </div>
             <div class="input-wrapper">
                 <label for="sets">Sets:</label>
-                <input type="number" name="sets" value="1">
+                <input type="number" class="repeat-entry" name="sets" value="1">
             </div>
             <div class="input-wrapper">
                 <label for="rounds">Rounds:</label>
-                <input type="number" name="rounds" value="1">
+                <input type="number" class="repeat-entry" name="rounds" value="1">
             </div>
         </form>
     </div>

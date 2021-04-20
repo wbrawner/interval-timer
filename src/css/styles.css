@@ -20,6 +20,7 @@ body {
 form label {
     display: block;
     padding: 0.5em 1em;
+    flex-shrink: 0;
 }
 
 a:link, a:hover, a:visited, a:active {
@@ -291,7 +292,6 @@ button.add-timer {
     border-bottom: 1px solid #BDBDBD;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0 0 3px 0 #BDBDBD;
     display: flex;
     justify-content: space-between;
 }
@@ -330,16 +330,41 @@ button.add-timer {
     max-height: calc(100vh - 60px);
 }
 
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.duration-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 @media all and (min-width: 1024px) {
     .new-timer {
         max-width: 800px;
-        max-height: 600px;
+        max-height: 500px;
         box-shadow: 0px 0px 3px #bdbdbd;
         border-radius: 10px;
     }
 
     #timer-setup {
         max-height: 540px;
+    }
+
+    .input-wrapper {
+        flex-direction: row;
+    }
+
+    form label {
+        flex-basis: 7em;
+        align-self: center;
+    }
+
+    .duration-wrapper {
+        justify-content: start;
     }
 }
 
@@ -350,27 +375,22 @@ button.add-timer {
 	width: 100%;
 	padding: 10px 20px;
 	font-size: 1.25em;
-        font-family: Open Sans, sans-serif;
-        box-sizing: border-box;
-        display: block;
+    font-family: Open Sans, sans-serif;
+    box-sizing: border-box;
+    display: block;
 }
 
-.select-wrapper {
-    display: table;
-    width: 100%;
+#timer-setup input.duration {
+    text-align: center;
+    flex: 0;
+    flex-basis: 20%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.select-wrapper span {
-    width: 2%;
-    font-weight: bold;
+.repeat-entry {
     text-align: center;
 }
-.select-wrapper select, .select-wrapper span {
-    display: table-cell;
-}
-
-.min {text-align: left;}
-.sec {text-align: right;}
 
 #back {float: left;}
 #next {float: right;}
