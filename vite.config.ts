@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-/** @type {import('vite').UserConfig} */
 export default defineConfig({
   base: "/",
   build: {
@@ -44,5 +43,8 @@ export default defineConfig({
     watch: {
       usePolling: true
     }
+  },
+  test: {
+    environment: 'jsdom'
   }
-})
+});
