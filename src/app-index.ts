@@ -7,6 +7,7 @@ import './script/pages/app-home';
 import './script/components/active-timer';
 import './script/components/counter';
 import './script/components/header';
+import './script/components/icons/icon-add';
 import './script/components/icons/icon-back';
 import './script/components/icons/icon-forward';
 import './script/components/icons/icon-navigation';

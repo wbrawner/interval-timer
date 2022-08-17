@@ -23,6 +23,11 @@ export class AppHome extends LitElement {
       active-timer {
         flex-grow: 1;
       }
+
+      p {
+        margin: 0;
+        text-align: center;
+      }
     `;
   }
 
@@ -38,21 +43,19 @@ export class AppHome extends LitElement {
       });
   }
 
-  share() {
-    if ((navigator as any).share) {
-      (navigator as any).share({
-        title: 'PWABuilder pwa-starter',
-        text: 'Check out the PWABuilder pwa-starter!',
-        url: 'https://github.com/pwa-builder/pwa-starter',
-      });
-    }
-  }
-
   private async closeEditor() {
     this.editTimer = undefined;
     this.timers = await this.timerService?.getAll() || [];
     if (!this.selectedTimer) {
       this.selectedTimer = this.timers[0]?.id;
+    }
+  }
+
+  private editButton() {
+    if (this.selectedTimer) {
+      return html`
+        <fluent-button appearance="stealth" slot="actions" @click=${() => this.editTimer = this.selectedTimer}>Edit</fluent-button>
+      `;
     }
   }
 
@@ -65,7 +68,14 @@ export class AppHome extends LitElement {
       `;
     } else {
       body = html`
-        <p>Create a timer to begin</p>
+        <p>
+          Create a timer to begin<br />
+          <fluent-button
+            appearance="stealth"
+            @click=${() => this.editTimer = -1}>
+            New Timer
+          </fluent-button>
+        </p>
       `;
     }
 
@@ -77,7 +87,7 @@ export class AppHome extends LitElement {
           .selectedTimer=${this.selectedTimer}
           @newtimer=${() => this.editTimer = -1}
           @selecttimer=${(e: SelectTimerEvent) => this.selectedTimer = e.timerId}>
-          <fluent-button appearance="stealth" slot="actions" @click=${() => this.editTimer = timer.id}>Edit</fluent-button>
+          ${this.editButton()}
         </app-header>
         ${body}
         <timer-form-dialog

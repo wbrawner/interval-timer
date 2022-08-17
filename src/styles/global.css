@@ -1,4 +1,3 @@
-
 /*
   This file is used for all of your global styles and CSS variables.
   Check here https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties for more info on using CSS variables.
@@ -9,7 +8,8 @@
   --foreground-color: rgba(255, 255, 255, 1);
 }
 
-html, body {
+html,
+body {
   font-family: var(--font-family);
   padding: 0;
   margin: 0;
@@ -20,12 +20,14 @@ html, body {
   transition: all 0.25s ease;
 }
 
-fluent-design-system-provider, app-index {
+fluent-design-system-provider,
+app-index {
   height: 100%;
   color: var(--foreground-color);
 }
 
 @media (prefers-color-scheme: dark) {
+
   html,
   body {
     background: #181818;
@@ -74,6 +76,7 @@ fluent-design-system-provider, app-index {
 }
 
 @media (prefers-color-scheme: light) {
+
   html,
   body {
     background: white;
@@ -82,7 +85,7 @@ fluent-design-system-provider, app-index {
 
   fluent-design-system-provider {
     --foreground-color: black;
-    --fill-color: #edebe9;
+    --fill-color: #f1f1f1;
     --background-color: white;
 
     --accent-base-color: #F2C812;
@@ -92,14 +95,25 @@ fluent-design-system-provider, app-index {
     --accent-fill-active: #F4D033;
     --accent-fill-selected: #C7A50F;
 
-    --neutral-foreground-rest: #e5e5e5;
+    --accent-foreground-rest: var(--foreground-color);
+    --accent-stroke-control-rest: linear-gradient(#F5D447 90%, #D2AD0F 100%);
+    --accent-stroke-control-hover: linear-gradient(#F5D447 90%, #D2AD0F 100%);
+    --accent-stroke-control-active: #F5D447;
+    --accent-stroke-control-focus: linear-gradient(#F5D447 90%, #D2AD0F 100%);
+    --foreground-on-accent-rest: #000000;
+    --foreground-on-accent-hover: #000000;
+    --foreground-on-accent-active: #000000;
+    --neutral-foreground-rest: #2B2B2B;
     --neutral-fill-input-rest: #e5e5e5;
     --neutral-fill-input-hover: white;
-    --neutral-fill-stealth-rest: #e5e5e5;
-
+    --neutral-fill-stealth-rest: rgba(0, 0, 0, 0);
+    --neutral-fill-stealth-hover: rgba(0, 0, 0, 0.2);
+    --neutral-fill-stealth-active: rgba(0, 0, 0, 0.4);
     --neutral-fill-rest: #5d5d5d;
-
     --neutral-fill-input-active: #e5e5e5;
+    --timer-background-red: #FF0909;
+    --timer-background-green: #1cb91c;
+    --timer-background-yellow: #F2C812;
+    --timer-background-blue: #0091ff;
   }
-
 }

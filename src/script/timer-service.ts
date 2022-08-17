@@ -5,7 +5,7 @@ import { IDBPDatabase } from 'idb';
 export interface TimerService {
     getAll(): Promise<IntervalTimer[]>;
     save(timer: IntervalTimer): Promise<IntervalTimer>;
-    delete(timer: IntervalTimer): Promise<void>;
+    delete(timer: IntervalTimer | number): Promise<void>;
 }
 
 const dbName = 'interval-timer';
@@ -24,6 +24,9 @@ class IDBTimerService implements TimerService {
   }
 
   async save(timer: IntervalTimer): Promise<IntervalTimer> {
+    if (!timer.id) {
+      delete timer.id;
+    }
     const key = await this.db.put(storeName, timer);
     return {
       ...timer,

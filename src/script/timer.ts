@@ -29,7 +29,7 @@ export function className(phase: Phase) {
 }
 
 export function durationString(n: number | undefined): string {
-  if (!n) return '00:00';
+  if (typeof n !== 'number') return '';
   let remainder = n;
   let s = '';
   if (remainder > 60) {

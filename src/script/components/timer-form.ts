@@ -17,8 +17,10 @@ export class TimerFormDialog extends LitElement {
         display: flex;
         box-sizing: border-box;
         flex-direction: column;
-        max-height: var(--dialog-height);
-        max-width: var(--dialog-width);
+        height: var(--dialog-height);
+        width: var(--dialog-width);
+        max-height: 100%;
+        max-width: 100%;
         padding: 1em;
       }
 
@@ -32,9 +34,16 @@ export class TimerFormDialog extends LitElement {
         flex-direction: column;
         overflow-y: auto;
         margin: 1em 0;
+      }
 
-      fluent-button {
-        margin: 1em 0;
+      ::part(control) {
+        --dialog-height: 764px;
+        box-sizing: border-box;
+        max-height: 100vh;
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     `;
   }
@@ -88,10 +97,7 @@ export class TimerFormDialog extends LitElement {
   }
 
   private async save() {
-    let id: string | undefined = this.timerId?.value;
-    if (!id) {
-      id = undefined;
-    }
+    const id: string = this.timerId?.value || '';
     const name = this.timerName?.value;
     if (!name) {
       // TODO: Show errors in form
@@ -99,7 +105,7 @@ export class TimerFormDialog extends LitElement {
       return;
     }
     const timer = new IntervalTimer(name);
-    timer.id = this.timer?.id;
+    timer.id = Number.parseInt(id);
     timer.description = this.timerDescription?.value;
     timer.warmUp = parseDuration(this.timerWarmUp?.value);
     timer.lowIntensity = parseDuration(this.timerLowIntensity?.value);
@@ -115,14 +121,44 @@ export class TimerFormDialog extends LitElement {
     this.toggleVisibility();
   }
 
+  private async delete() {
+    const id = Number.parseInt(this.timerId?.value || '');
+    await this.timerService?.delete(id);
+    this.toggleVisibility();
+  }
+
+  private deleteButton() {
+    if (this.timer?.id) {
+      return html`
+        <fluent-button
+          appearance="outline"
+          tabindex="0"
+          @click=${this.delete}
+          style="margin-top: 1em;">Delete</fluent-button>
+      `;
+    }
+  }
+
+  private durationString(duration: number | undefined) {
+    if (!duration) {
+      return '';
+    } else {
+      return durationString(duration);
+    }
+  }
+
   render() {
     let body;
     if (this.saving) {
-
+      return html`
+        <div class="dialog">
+          <p>Saving...</p>
+        </div>
+      `;
     } else {
       const title = this.timer?.id ? 'Edit Timer' : 'New Timer';
       body = html`
-        <div class="dialog">
+        <div class="dialog ${this.timer?.id ? 'tall' : ''}">
           <h2>${title}</h2>
           <form @submit=${this.save}>
             <input
@@ -145,31 +181,31 @@ export class TimerFormDialog extends LitElement {
               appearance="outline"
               placeholder="05:00"
               pattern="${this.durationPattern}"
-              .value=${durationString(this.timer?.warmUp)}>Warm Up</fluent-text-field>
+              .value=${this.durationString(this.timer?.warmUp)}>Warm Up</fluent-text-field>
               <fluent-text-field
               id="timer-low"
               appearance="outline"
               placeholder="00:30"
               pattern="${this.durationPattern}"
-              .value=${durationString(this.timer?.lowIntensity)}>Low Intensity</fluent-text-field>
+              .value=${this.durationString(this.timer?.lowIntensity)}>Low Intensity</fluent-text-field>
               <fluent-text-field
               id="timer-hi"
               appearance="outline"
               placeholder="01:00"
               pattern="${this.durationPattern}"
-              .value=${durationString(this.timer?.highIntensity)}>High Intensity</fluent-text-field>
+              .value=${this.durationString(this.timer?.highIntensity)}>High Intensity</fluent-text-field>
               <fluent-text-field
               id="timer-rest"
               appearance="outline"
               placeholder="01:00"
               pattern="${this.durationPattern}"
-              .value=${durationString(this.timer?.rest)}>Rest</fluent-text-field>
+              .value=${this.durationString(this.timer?.rest)}>Rest</fluent-text-field>
               <fluent-text-field
               id="timer-cool"
               appearance="outline"
               placeholder="05:00"
               pattern="${this.durationPattern}"
-              .value=${durationString(this.timer?.coolDown)}>Cooldown</fluent-text-field>
+              .value=${this.durationString(this.timer?.coolDown)}>Cooldown</fluent-text-field>
             <fluent-text-field
               id="timer-sets"
               appearance="outline"
@@ -180,14 +216,19 @@ export class TimerFormDialog extends LitElement {
               appearance="outline"
               placeholder="2"
               .value=${this.timer?.rounds}>Rounds</fluent-text-field>
+            <fluent-button
+              appearance="accent"
+              tabindex="0"
+              @click=${this.save}
+              style="margin: 1em 0;">Save</fluent-button>
+            <fluent-button appearance="outline" tabindex="0" @click=${this.toggleVisibility}>Cancel</fluent-button>
+            ${this.deleteButton()}
           </form>
-          <fluent-button appearance="accent" tabindex="0" @click=${this.save}>Save</fluent-button>
-          <fluent-button appearance="outline" tabindex="0" @click=${this.toggleVisibility}>Cancel</fluent-button>
         </div>
       `;
     }
     return html`
-      <fluent-dialog ?hidden=${!this.visible} trap-focus modal>
+      <fluent-dialog ?hidden=${!this.visible} trap-focus modal class=${this.timer?.id ? 'tall' : ''}>
         ${body}
       </fluent-dialog>
     `;

@@ -1,5 +1,3 @@
-// @ts-ignore
-import Navigation from '@fluentui/svg-icons/icons/navigation_20_regular.svg';
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 

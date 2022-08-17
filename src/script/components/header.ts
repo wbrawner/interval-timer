@@ -12,9 +12,6 @@ export class AppHeader extends LitElement {
   static get styles() {
     return css`
       * {
-        --neutral-fill-stealth-rest: rgba(255, 255, 255, 0);
-        --neutral-fill-stealth-hover: rgba(255, 255, 255, 0.2);
-        --neutral-fill-stealth-active: rgba(255, 255, 255, 0.4);
         user-select: none;
       }
 

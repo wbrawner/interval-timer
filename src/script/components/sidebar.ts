@@ -1,7 +1,5 @@
 import { LitElement, css, html } from 'lit';
 import { property, customElement, query } from 'lit/decorators.js';
-// @ts-ignore
-import Add from '@fluentui/svg-icons/icons/add_20_regular.svg';
 import { IntervalTimer } from '../timer';
 import { SelectTimerEvent } from '../select-timer-event';
 
@@ -70,54 +68,16 @@ export class AppSidebar extends LitElement {
         display: block;
       }
 
-      pwa-install {
-        position: relative;
-        box-sizing: border-box;
-        outline: none;
-        font-family: var(--body-font);
-        font-size: var(--type-ramp-base-font-size);
-        line-height: var(--type-ramp-base-line-height);
-        font-weight: initial;
-        font-variation-settings: var(--type-ramp-base-font-variations);
-        height: calc((var(--base-height-multiplier) + var(--density)) * var(--design-unit) * 1px);
-        min-width: calc((var(--base-height-multiplier) + var(--density)) * var(--design-unit) * 1px);
-        color: var(--neutral-foreground-rest);
-        border-radius: calc(var(--control-corner-radius) * 1px);
-        fill: currentcolor;
-        cursor: pointer;
+      fluent-option {
+        --design-unit: 6;
       }
 
-      pwa-install::part(openButton) {
-        background: var(--neutral-fill-stealth-rest);
-        border: calc(var(--stroke-width) * 1px) solid transparent;
-        flex-grow: 1;
-        box-sizing: border-box;
-        display: inline-flex;
-        justify-content: start;
-        align-items: center;
-        padding: 0 calc((10 + (var(--design-unit) * 2 * var(--density))) * 1px);
-        white-space: nowrap;
-        outline: none;
-        text-decoration: none;
-        color: inherit;
-        border-radius: inherit;
-        fill: inherit;
-        cursor: inherit;
-        font-family: inherit;
-        height: 100%;
-      }
-
-      pwa-install::part(openButton):hover {
-        background: var(--neutral-fill-stealth-hover);
-      }
-
-      fluent-button, pwa-install {
-        box-sizing: border-box;
-        height: 42px;
+      fluent-button {
+        --design-unit: 6;
         padding: 5px;
       }
 
-      fluent-button, button, pwa-install::part(openButton) {
+      fluent-button::part(control) {
         justify-content: start;
         width: 100%;
       }
@@ -129,18 +89,6 @@ export class AppSidebar extends LitElement {
 
   constructor() {
     super();
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-
-    });
-  }
-
-  updated() {
-    // Stupid hack to get the button to be left-aligned
-    const button: HTMLButtonElement | null | undefined = this.fButton?.shadowRoot?.querySelector('button');
-    if (button) {
-      button.setAttribute('style', 'justify-content: start;');
-    }
   }
 
   private toggleVisibility() {
@@ -175,13 +123,15 @@ export class AppSidebar extends LitElement {
                   <fluent-option
                     @click=${() => this.selectTimer(timer.id!)}
                     selected=${timer.id === this.selectedTimer}
-                    value=${timer.name}>${timer.name}</fluent-option>
+                    value=${timer.name}>
+                    ${timer.name}<br />${timer.description || ''}
+                  </fluent-option>
                 `;
   })}
           </fluent-listbox>
           <fluent-divider></fluent-divider>
           <fluent-button appearance="stealth" @click="${this.newTimer}">
-            <img slot="start" src="${Add}" aria-hidden="true" />
+            <icon-add slot="start"></icon-add>
             New Timer
           </fluent-button>
       </div>
