@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Azure Static Web Apps
 
 on:
   push:
@@ -24,11 +24,9 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Vite Build
-        run: npm run build -- --base=${{ github.event.repository.name }}
-
-      - name: GitHub Pages action
-        uses: peaceiris/actions-gh-pages@v3.7.3
+      - name: Deploy
+        uses: Azure/static-web-apps-deploy@v1
         with:
-          publish_dir: ./dist
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          output_location: dist
+          skip_api_build: true
