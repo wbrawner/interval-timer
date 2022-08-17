@@ -128,15 +128,16 @@ export class TimerFormDialog extends LitElement {
   }
 
   private deleteButton() {
-    if (this.timer?.id) {
-      return html`
-        <fluent-button
-          appearance="outline"
-          tabindex="0"
-          @click=${this.delete}
-          style="margin-top: 1em;">Delete</fluent-button>
-      `;
+    if (!this.timer?.id) {
+      return null;
     }
+    return html`
+      <fluent-button
+        appearance="outline"
+        tabindex="0"
+        @click=${this.delete}
+        style="margin-top: 1em;">Delete</fluent-button>
+    `;
   }
 
   private durationString(duration: number | undefined) {

@@ -52,11 +52,12 @@ export class AppHome extends LitElement {
   }
 
   private editButton() {
-    if (this.selectedTimer) {
-      return html`
-        <fluent-button appearance="stealth" slot="actions" @click=${() => this.editTimer = this.selectedTimer}>Edit</fluent-button>
-      `;
+    if (!this.selectedTimer) {
+      return null;
     }
+    return html`
+      <fluent-button appearance="stealth" slot="actions" @click=${() => this.editTimer = this.selectedTimer}>Edit</fluent-button>
+    `;
   }
 
   render() {
