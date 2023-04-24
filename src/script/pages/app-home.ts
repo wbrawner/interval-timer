@@ -94,7 +94,7 @@ export class AppHome extends LitElement {
         <timer-form-dialog
           ?visible=${this.editTimer !== undefined}
           .timerService=${this.timerService}
-          .timer=${timer}
+          .timer=${this.editTimer === timer?.id ? timer : null}
           @close=${this.closeEditor}></timer-form-dialog>
       </main>
     `;
