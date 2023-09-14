@@ -13,7 +13,7 @@
     "lint": "eslint src/**/*.ts",
     "start": "npm run dev",
     "start-remote": "vite --host",
-    "test": "vitest"
+    "test": "vitest --run"
   },
   "author": "",
   "license": "ISC",
