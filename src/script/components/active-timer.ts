@@ -94,7 +94,7 @@ export class ActiveTimer extends LitElement {
   }
 
   updated() {
-    if (!this.timerState || this.timerState.timer.id !== this.timer.id) {
+    if (!this.timerState || this.timerState.timer !== this.timer) {
       this.timerState = new TimerState(this.timer, () => this.requestUpdate());
     }
   }

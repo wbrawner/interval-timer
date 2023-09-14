@@ -36,11 +36,18 @@ export class AppHome extends LitElement {
     timerServiceSingleton()
       .then(async timerService => {
         this.timerService = timerService;
-        this.timers = await timerService.getAll();
-        if (!this.selectedTimer) {
-          this.selectedTimer = this.timers[0]?.id;
-        }
+        this.loadTimers()
       });
+    document.addEventListener('timersaved', () => {
+      this.loadTimers()
+    })
+  }
+
+  private async loadTimers() {
+    this.timers = await this.timerService?.getAll() || [];
+    if (!this.selectedTimer) {
+      this.selectedTimer = this.timers[0]?.id;
+    }
   }
 
   private async closeEditor() {
