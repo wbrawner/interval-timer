@@ -2,6 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { property, customElement, query } from 'lit/decorators.js';
 import { durationString, IntervalTimer, parseDuration } from '../timer';
 import { TimerService } from '../timer-service';
+import { TimerSavedEvent } from '../timer-saved-event';
 
 @customElement('timer-form-dialog')
 export class TimerFormDialog extends LitElement {
@@ -119,6 +120,7 @@ export class TimerFormDialog extends LitElement {
     this.saving = false;
     // TODO: Clear form
     this.toggleVisibility();
+    document.dispatchEvent(new TimerSavedEvent(id))
   }
 
   private async delete() {
