@@ -14,6 +14,12 @@ export class ActiveTimer extends LitElement {
         user-select: none;
       }
 
+      .timer-wrapper {
+        padding: 10px;
+        box-sizing: border-box;
+        height: 100%;
+      }
+
       .timer {
         display: flex;
         flex-direction: column;
@@ -21,7 +27,9 @@ export class ActiveTimer extends LitElement {
         justify-content: space-between;
         transition: all 0.25s ease;
         padding: 1em;
-        box-sizing: border-box
+        box-sizing: border-box;
+        border-radius: 1em;
+        background-color: var(--timer-background-default);
       }
 
       .main {
@@ -114,6 +122,7 @@ export class ActiveTimer extends LitElement {
   render() {
     if (!this.timerState) return;
     return html`
+    <div class="timer-wrapper">
       <div class="timer ${className(this.timerState.phase)}">
         <div class="main">
           <p class="phase">${this.timerState.phase}</p>
@@ -135,6 +144,6 @@ export class ActiveTimer extends LitElement {
           <labeled-counter label="Round" .value=${this.timerState.round.toString()}></labeled-counter>
         </footer>
       </div>
-    `;
+    </div>`;
   }
 }

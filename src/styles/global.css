@@ -30,7 +30,7 @@ app-index {
 
   html,
   body {
-    background: #181818;
+    background: #000000;
   }
 
   fluent-design-system-provider {
@@ -68,6 +68,7 @@ app-index {
     --neutral-fill-stealth-active: rgba(255, 255, 255, 0.4);
     --neutral-stroke-divider-rest: rgba(255, 255, 255, 0.2);
 
+    --timer-background-default: #181818;
     --timer-background-red: #860101;
     --timer-background-green: #0C5E0C;
     --timer-background-yellow: #D2AD0F;
@@ -79,7 +80,7 @@ app-index {
 
   html,
   body {
-    background: white;
+    background: #000000;
     color: black;
   }
 
@@ -111,6 +112,7 @@ app-index {
     --neutral-fill-stealth-active: rgba(0, 0, 0, 0.4);
     --neutral-fill-rest: #5d5d5d;
     --neutral-fill-input-active: #e5e5e5;
+    --timer-background-default: #FFFFFF;
     --timer-background-red: #FF0909;
     --timer-background-green: #1cb91c;
     --timer-background-yellow: #F2C812;

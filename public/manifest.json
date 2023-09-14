@@ -5,10 +5,10 @@
   "display": "standalone",
   "start_url": "/",
   "short_name": "Trainterval",
-  "theme_color": "#181818",
+  "theme_color": "#000000",
   "description": "An interval timer",
   "orientation": "any",
-  "background_color": "#181818",
+  "background_color": "#000000",
   "related_applications": [],
   "prefer_related_applications": false,
   "screenshots": [
