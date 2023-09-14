@@ -76,7 +76,7 @@ export class ActiveTimer extends LitElement {
   constructor() {
     super();
     document.addEventListener('keyup', (event: KeyboardEvent) => {
-      if (event.target !== document.body) {
+      if (event.target !== document.body || event.altKey || event.shiftKey || event.metaKey) {
         return;
       }
       switch (event.key) {
