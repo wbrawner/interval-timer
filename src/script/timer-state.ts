@@ -13,7 +13,7 @@ export class TimerState {
     [Phase.REST, new Audio('assets/audio/rest.mp3')],
     [Phase.COOLDOWN, new Audio('assets/audio/cool.mp3')],
   ]);
-  private ticker?: NodeJS.Timer;
+  private ticker?: NodeJS.Timeout;
   private callback: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private wakeLock?: any;
