@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@vaadin/router": "^1.7.5",
-    "idb": "^7.0.2",
+    "idb": "^7.1.1",
     "lit": "^3.0.0",
     "workbox-build": "^7.0.0",
     "workbox-core": "^7.0.0",
