@@ -24,6 +24,14 @@ export class AppHome extends LitElement {
         flex-grow: 1;
       }
 
+      .timer-wrapper {
+        padding: 10px;
+        box-sizing: border-box;
+        height: 100%;
+        border-radius: 1em;
+        background-color: var(--timer-background-default);
+      }
+
       p {
         margin: 0;
         text-align: center;
@@ -76,6 +84,7 @@ export class AppHome extends LitElement {
       `;
     } else {
       body = html`
+      <div class="timer-wrapper">
         <p>
           Create a timer to begin<br />
           <fluent-button
@@ -84,6 +93,7 @@ export class AppHome extends LitElement {
             New Timer
           </fluent-button>
         </p>
+       </div>
       `;
     }
 
