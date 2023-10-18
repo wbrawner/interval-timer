@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fluentui/web-components": "^2.5.16",
     "@vaadin/router": "^1.7.5",
     "idb": "^7.1.1",
     "lit": "^3.0.0",
