@@ -21,7 +21,7 @@
     "@fluentui/web-components": "^2.5.16",
     "@vaadin/router": "^1.7.5",
     "idb": "^7.1.1",
-    "lit": "^3.0.2",
+    "lit": "^3.1.0",
     "workbox-build": "^7.0.0",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0"
