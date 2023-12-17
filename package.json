@@ -1,22 +1,19 @@
 {
-  "name": "pwa-starter",
+  "name": "interval-timer",
   "version": "0.0.1",
-  "description": "A starter kit for building PWAs!",
+  "description": "An interval timer PWA",
   "main": "index.js",
   "scripts": {
     "build": "tsc && vite build",
     "coverage": "vitest --coverage",
-    "deploy": " npx @azure/static-web-apps-cli login --no-use-keychain && npx @azure/static-web-apps-cli deploy",
-    "dev": "npx @azure/static-web-apps-cli start http://localhost:3000 --run \"npm run dev-server\"",
-    "dev-server": "vite --open",
-    "dev-task": "vite",
+    "dev": "vite",
     "lint": "eslint src/**/*.ts",
     "start": "npm run dev",
     "start-remote": "vite --host",
     "test": "vitest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "William Patrick Brawner <me@wbrawner.com>",
+  "license": "AGPL-3.0-only",
   "dependencies": {
     "@vaadin/router": "^1.7.5",
     "idb": "^8.0.0",
