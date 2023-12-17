@@ -6,9 +6,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "coverage": "vitest --coverage",
-    "deploy": " npx @azure/static-web-apps-cli login --no-use-keychain && npx @azure/static-web-apps-cli deploy",
-    "dev": "npx @azure/static-web-apps-cli start http://localhost:3000 --run \"npm run dev-server\"",
-    "dev-server": "vite --open",
+    "dev": "vite --open",
     "dev-task": "vite",
     "lint": "eslint src/**/*.ts",
     "start": "npm run dev",
@@ -18,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fluentui/web-components": "^2.5.16",
     "@vaadin/router": "^1.7.5",
     "idb": "^8.0.0",
     "lit": "^3.1.0",

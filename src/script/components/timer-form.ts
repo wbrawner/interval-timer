@@ -119,7 +119,6 @@ export class TimerFormDialog extends LitElement {
     await this.timerService?.save(timer);
     this.saving = false;
     // TODO: Clear form
-    this.toggleVisibility();
     document.dispatchEvent(new TimerSavedEvent(id))
   }
 
@@ -134,11 +133,10 @@ export class TimerFormDialog extends LitElement {
       return null;
     }
     return html`
-      <fluent-button
-        appearance="outline"
+      <button
         tabindex="0"
         @click=${this.delete}
-        style="margin-top: 1em;">Delete</fluent-button>
+        style="margin-top: 1em;">Delete</button>
     `;
   }
 
@@ -169,71 +167,69 @@ export class TimerFormDialog extends LitElement {
               type="hidden"
               name="id"
               .value=${this.timer?.id?.toString() || ''} />
-            <fluent-text-field
+            <label for="timer-name">Name</label>
+            <input
               id="timer-name"
-              appearance="outline"
+              type="text"
               placeholder="My Timer"
-              .value=${this.timer?.name || ''}>Name</fluent-text-field>
-            <fluent-text-area
+              .value=${this.timer?.name || ''}/ >
+            <label for="timer-description">Description</label>
+            <textarea
               id="timer-description"
-              appearance="outline"
               placeholder="More details"
-              .value=${this.timer?.description || ''}>Description</fluent-text-area>
-            <fluent-text-field
+              .value=${this.timer?.description || ''}></textarea>
+            <label for="timer-warmup">Warm-up</label>
+            <input
               id="timer-warmup"
-              appearance="outline"
               placeholder="05:00"
               pattern="${this.durationPattern}"
-              .value=${this.durationString(this.timer?.warmUp)}>Warm Up</fluent-text-field>
-              <fluent-text-field
+              .value=${this.durationString(this.timer?.warmUp)} />
+            <label for="timer-low">Low Intensity</label>
+            <input
               id="timer-low"
-              appearance="outline"
               placeholder="00:30"
               pattern="${this.durationPattern}"
-              .value=${this.durationString(this.timer?.lowIntensity)}>Low Intensity</fluent-text-field>
-              <fluent-text-field
+              .value=${this.durationString(this.timer?.lowIntensity)}>
+            <label for="timer-hi">High Intensity</label>
+            <input
               id="timer-hi"
-              appearance="outline"
               placeholder="01:00"
               pattern="${this.durationPattern}"
-              .value=${this.durationString(this.timer?.highIntensity)}>High Intensity</fluent-text-field>
-              <fluent-text-field
+              .value=${this.durationString(this.timer?.highIntensity)}>
+            <label for="timer-rest">Rest</label>
+            <input
               id="timer-rest"
-              appearance="outline"
               placeholder="01:00"
               pattern="${this.durationPattern}"
-              .value=${this.durationString(this.timer?.rest)}>Rest</fluent-text-field>
-              <fluent-text-field
+              .value=${this.durationString(this.timer?.rest)}>
+            <label for="timer-cool">Cooldown</label>
+            <input
               id="timer-cool"
-              appearance="outline"
               placeholder="05:00"
               pattern="${this.durationPattern}"
-              .value=${this.durationString(this.timer?.coolDown)}>Cooldown</fluent-text-field>
-            <fluent-text-field
+              .value=${this.durationString(this.timer?.coolDown)}>
+            <label for="timer-sets">Sets</label>
+            <input
               id="timer-sets"
-              appearance="outline"
               placeholder="4"
-              .value=${this.timer?.sets}>Sets</fluent-text-field>
-            <fluent-text-field
+              .value=${this.timer?.sets}>
+            <label for="timer-rounds">Rounds</label>
+            <input
               id="timer-rounds"
-              appearance="outline"
               placeholder="2"
-              .value=${this.timer?.rounds}>Rounds</fluent-text-field>
-            <fluent-button
-              appearance="accent"
+              .value=${this.timer?.rounds}>
+            <button
               tabindex="0"
               @click=${this.save}
-              style="margin: 1em 0;">Save</fluent-button>
-            <fluent-button appearance="outline" tabindex="0" @click=${this.toggleVisibility}>Cancel</fluent-button>
+              style="margin: 1em 0;">Save</button>
+            <button tabindex="0" @click=${this.toggleVisibility}>Cancel</button>
             ${this.deleteButton()}
           </form>
         </div>
       `;
     }
     return html`
-      <fluent-dialog ?hidden=${!this.visible} trap-focus modal class=${this.timer?.id ? 'tall' : ''}>
         ${body}
-      </fluent-dialog>
     `;
   }
 }

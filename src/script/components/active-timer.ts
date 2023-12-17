@@ -128,15 +128,15 @@ export class ActiveTimer extends LitElement {
           <p class="phase">${this.timerState.phase}</p>
           <p class="time">${durationString(this.timerState.timeRemaining)}</p>
           <div class="controls">
-            <fluent-button appearance="stealth" @click=${this.goBack}>
+            <button @click=${this.goBack}>
               <back-icon></back-icon>
-            </fluent-button>
-            <fluent-button appearance="stealth" @click=${this.toggleActiveState}>
+            </button>
+            <button @click=${this.toggleActiveState}>
               ${this.toggleIcon()}
-            </fluent-button>
-            <fluent-button appearance="stealth" @click=${this.goForward}>
+            </button>
+            <button @click=${this.goForward}>
               <forward-icon></forward-icon>
-            </fluent-button>
+            </button>
           </div>
         </div>
         <footer>

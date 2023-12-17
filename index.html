@@ -8,31 +8,24 @@
 
   <base href="/" />
 
-  <!-- This meta viewport ensures the webpage's dimensions change according to the device it's on. This is called Responsive Web Design.-->
   <meta name="viewport"
     content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <meta name="description" content="An interval timer" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- These meta tags are Apple-specific, and set the web application to run in full-screen mode with a black status bar. Learn more at https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Trainterval" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-  <!-- Imports an icon to represent the document. -->
   <link rel="icon" href="/assets/icons/24x24-icon.png" type="image/x-icon" />
 
-  <!-- Imports the manifest to represent the web application. A web app must have a manifest to be a PWA. -->
   <link rel="manifest" href="/manifest.json" />
 
   <script type="module" src="/src/app-index.ts"></script>
 </head>
 
 <body>
-  <!-- Our app-index web component. This component is defined in src/pages/app-index.ts-->
-  <fluent-design-system-provider>
-    <app-index></app-index>
-  </fluent-design-system-provider>
+  <app-index></app-index>
 
   <script>
     if ('serviceWorker' in navigator) {

@@ -12,6 +12,9 @@ export class AppHome extends LitElement {
   @property({ type: Number }) editTimer?: number;
   private timerService?: TimerService;
 
+  @query('dialog')
+  dialog: HTMLElement | null | undefined;
+
   static get styles() {
     return css`
       main {
@@ -64,6 +67,7 @@ export class AppHome extends LitElement {
     if (!this.selectedTimer) {
       this.selectedTimer = this.timers[0]?.id;
     }
+      dialog.close()
   }
 
   private editButton() {
@@ -71,7 +75,7 @@ export class AppHome extends LitElement {
       return null;
     }
     return html`
-      <fluent-button appearance="stealth" slot="actions" @click=${() => this.editTimer = this.selectedTimer}>Edit</fluent-button>
+      <button @click=${() => this.editTimer = this.selectedTimer}>Edit</button>
     `;
   }
 
@@ -87,11 +91,10 @@ export class AppHome extends LitElement {
       <div class="timer-wrapper">
         <p>
           Create a timer to begin<br />
-          <fluent-button
-            appearance="stealth"
+          <button
             @click=${() => this.editTimer = -1}>
             New Timer
-          </fluent-button>
+          </button>
         </p>
        </div>
       `;
@@ -107,12 +110,13 @@ export class AppHome extends LitElement {
           @selecttimer=${(e: SelectTimerEvent) => this.selectedTimer = e.timerId}>
           ${this.editButton()}
         </app-header>
-        ${body}
+        <dialog>
         <timer-form-dialog
-          ?visible=${this.editTimer !== undefined}
           .timerService=${this.timerService}
           .timer=${this.editTimer === timer?.id ? timer : null}
           @close=${this.closeEditor}></timer-form-dialog>
+        </dialog>
+        ${body}
       </main>
     `;
   }

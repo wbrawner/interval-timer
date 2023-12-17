@@ -32,10 +32,6 @@ export class AppHeader extends LitElement {
         font-weight: bold;
       }
 
-      nav fluent-anchor {
-        margin-left: 10px;
-      }
-
       #menu-button-block {
         display: flex;
         justify-content: space-between;
@@ -48,12 +44,6 @@ export class AppHeader extends LitElement {
 
       .spacer {
         width: 1em;
-      }
-
-      @media(prefers-color-scheme: light) {
-        nav fluent-anchor::part(control) {
-          color: initial;
-        }
       }
     `;
   }
@@ -74,9 +64,9 @@ export class AppHeader extends LitElement {
     return html`
       <header>
         <div id="menu-button-block">
-          <fluent-button appearance="stealth" @click="${this.toggleSidebar}">
+          <button @click="${this.toggleSidebar}">
             <navigation-icon></navigation-icon>
-          </fluent-button>
+          </button>
           <div class="spacer"></div>
           <h1>${this.apptitle || 'Trainterval'}</h1>
         </div>

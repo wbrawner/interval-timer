@@ -19,10 +19,6 @@ export class AppSidebar extends LitElement {
         header {
           color: black;
         }
-
-        nav fluent-anchor::part(control) {
-          color: initial;
-        }
       }
 
       .sidebar-content {
@@ -44,11 +40,6 @@ export class AppSidebar extends LitElement {
         padding: 1em;
       }
 
-      fluent-listbox {
-        flex-grow: 1;
-        border: none;
-      }
-
       .visible .sidebar-content {
         transform: translate3d(0, 0, 0);
       }
@@ -67,25 +58,8 @@ export class AppSidebar extends LitElement {
       .visible .overlay  {
         display: block;
       }
-
-      fluent-option {
-        --design-unit: 6;
-      }
-
-      fluent-button {
-        --design-unit: 6;
-        padding: 5px;
-      }
-
-      fluent-button::part(control) {
-        justify-content: start;
-        width: 100%;
-      }
     `;
   }
-
-  @query('fluent-button')
-    fButton?: HTMLElement;
 
   constructor() {
     super();
@@ -117,23 +91,23 @@ export class AppSidebar extends LitElement {
         <div class="overlay" @click="${this.toggleVisibility}"></div>
         <div class="sidebar-content">
           <h3>Trainterval</h3>
-          <fluent-listbox>
+          <ul>
             ${this.timers?.map(timer => {
     return html`
-                  <fluent-option
+                  <li
                     @click=${() => this.selectTimer(timer.id!)}
                     selected=${timer.id === this.selectedTimer}
                     value=${timer.name}>
                     ${timer.name}<br />${timer.description || ''}
-                  </fluent-option>
+                  </li>
                 `;
   })}
-          </fluent-listbox>
-          <fluent-divider></fluent-divider>
-          <fluent-button appearance="stealth" @click="${this.newTimer}">
-            <icon-add slot="start"></icon-add>
+          </ul>
+          <hr />
+          <button @click="${this.newTimer}">
+            <icon-add></icon-add>
             New Timer
-          </fluent-button>
+          </button>
       </div>
     `;
   }
