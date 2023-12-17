@@ -1,4 +1,7 @@
 export class IntervalTimer {
+  /**
+   *
+   */
   id?: number;
   name: string;
   description?: string;

@@ -3,17 +3,18 @@
   "version": "0.0.1",
   "description": "A starter kit for building PWAs!",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc && vite build",
     "coverage": "vitest --coverage",
     "deploy": " npx @azure/static-web-apps-cli login --no-use-keychain && npx @azure/static-web-apps-cli deploy",
     "dev": "npx @azure/static-web-apps-cli start http://localhost:3000 --run \"npm run dev-server\"",
-    "dev-server": "vite --open",
+    "dev-server": "light-server -s src",
     "dev-task": "vite",
     "lint": "eslint src/**/*.ts",
     "start": "npm run dev",
     "start-remote": "vite --host",
-    "test": "vitest"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,9 @@
     "@fluentui/web-components": "^2.5.16",
     "@vaadin/router": "^1.7.5",
     "idb": "^7.1.1",
+    "light-server": "^2.9.1",
     "lit": "^3.1.0",
+    "ts-to-jsdoc": "^1.5.0",
     "workbox-build": "^7.0.0",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0"
@@ -34,6 +37,7 @@
     "c8": "^8.0.1",
     "eslint": "^8.54.0",
     "jsdom": "^23.0.0",
+    "mocha": "^10.2.0",
     "typescript": "^5.3.2",
     "vite": "^4.5.0",
     "vite-plugin-pwa": "^0.17.2",

@@ -1,5 +1,4 @@
 import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 import { registerSW } from 'virtual:pwa-register';
 
@@ -17,10 +16,9 @@ import './script/components/sidebar';
 import './script/components/timer-form';
 import './styles/global.css';
 
-@customElement('app-index')
 export class AppIndex extends LitElement {
   static get styles() {
-    return css`
+    return css `
       main {
         box-sizing: border-box;
         height: 100%;
@@ -69,6 +67,7 @@ export class AppIndex extends LitElement {
     super();
   }
 
+  /** @returns {void} */
   firstUpdated() {
     // this method is a lifecycle even in lit
     // for more info check out the lit docs https://lit.dev/docs/components/lifecycle/
@@ -78,18 +77,19 @@ export class AppIndex extends LitElement {
     router.setRoutes([
       // temporarily cast to any because of a Type bug with the router
       {
-        path: (import.meta as any).env.BASE_URL,
+        path: import.meta.env.BASE_URL,
         animate: true,
         children: [
           { path: '', component: 'app-home' },
         ],
-      } as any,
+      },
     ]);
     registerSW({ immediate: true });
   }
 
+  /** @returns {any} */
   render() {
-    return html`
+    return html `
       <div style="height: 100%;">
         <main>
           <div id="routerOutlet"></div>
@@ -98,3 +98,5 @@ export class AppIndex extends LitElement {
     `;
   }
 }
+
+window.customElements.define('app-index', AppIndex)

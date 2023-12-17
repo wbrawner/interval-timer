@@ -1,37 +1,62 @@
-import { IntervalTimer, Phase } from './timer';
+import { IntervalTimer, Phase } from './timer.js';
 
 export class TimerState {
-  timer: IntervalTimer;
-  phase: Phase = Phase.WARM_UP;
-  timeRemaining: number;
-  set: number;
-  round: number;
-  private sounds: Map<Phase, HTMLAudioElement> = new Map([
-    [Phase.WARM_UP, new Audio('assets/audio/warm.mp3')],
-    [Phase.LOW_INTENSITY, new Audio('assets/audio/low.mp3')],
-    [Phase.HIGH_INTENSITY, new Audio('assets/audio/high.mp3')],
-    [Phase.REST, new Audio('assets/audio/rest.mp3')],
-    [Phase.COOLDOWN, new Audio('assets/audio/cool.mp3')],
-  ]);
-  private ticker?: NodeJS.Timeout;
-  private callback: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private wakeLock?: any;
+  /**
+   * @type {IntervalTimer}
+   */
+  timer;
+  /**
+   * @type {string} One of the Phase constants
+   */
+  phase = Phase.WARM_UP;
+  /**
+   * @type {number}
+   */
+  timeRemaining;
+  /**
+   * @type {number}
+   */
+  set;
+  /**
+   * @type {number}
+   */
+  round;
+  /**
+   * @type {Map<string, HTMLAudioElement>}
+   */
+  #sounds;
+  /**
+   * @type {NodeJS.Timer}
+   */
+  #ticker;
+  /**
+   * @type {() => void}
+   */
+  #callback;
+  /**
+   * @type {WakeLock}
+   */
+  #wakeLock;
 
-  constructor(timer: IntervalTimer, callback?: () => void) {
+  /**
+   * @param timer {IntervalTimer}
+   * @param callback {(() => void) | undefined}
+   */
+  constructor(timer, callback, sounds) {
     this.timer = timer;
     this.timeRemaining = this.timer.warmUp;
     this.set = this.timer.sets;
     this.round = this.timer.rounds;
     this.callback = callback ?? (() => null);
+    this.#sounds = sounds;
   }
 
   active() {
     return this.ticker !== undefined;
   }
 
-  private playSound() {
-    this.sounds.get(this.phase)?.play();
+  #playSound() {
+    this.#sounds.get(this.phase)?.play();
     if (navigator.vibrate) {
       navigator.vibrate(200);
     }
@@ -52,29 +77,27 @@ export class TimerState {
     this.callback();
   }
 
-  private lockScreen() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const locker = (navigator as any).wakeLock;
+  #lockScreen() {
+    const locker = navigator.wakeLock;
     if (!locker) {
       return;
     }
     try {
       locker.request('screen')
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .then((lock: any) => {
+        .then(lock => {
           this.wakeLock = lock;
           this.wakeLock.addEventListener('release', () => {
             this.wakeLock = null;
           });
-        }).catch((err: Error) => {
-          console.error('Failed to aquire wakelock', err);
+        }).catch(err => {
+          console.error('Failed to acquire wakelock', err);
         });
     } catch (err) {
-      console.error('Failed to aquire wakelock', err);
+      console.error('Failed to acquire wakelock', err);
     }
   }
 
-  private unlockScreen() {
+  #unlockScreen() {
     try {
       this.wakeLock?.release();
       this.wakeLock = null;
@@ -83,7 +106,7 @@ export class TimerState {
     }
   }
 
-  private restartTicker() {
+  #restartTicker() {
     const ticker = this.ticker;
     if (ticker) {
       clearInterval(ticker);
@@ -91,7 +114,7 @@ export class TimerState {
     this.ticker = setInterval(() => this.tick(), 1000);
   }
 
-  private tick() {
+  #tick() {
     this.timeRemaining = Math.max(0, this.timeRemaining - 1);
     this.callback();
     if (this.timeRemaining === 0) {

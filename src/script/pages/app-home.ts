@@ -44,11 +44,11 @@ export class AppHome extends LitElement {
     timerServiceSingleton()
       .then(async timerService => {
         this.timerService = timerService;
-        this.loadTimers()
+        this.loadTimers();
       });
     document.addEventListener('timersaved', () => {
-      this.loadTimers()
-    })
+      this.loadTimers();
+    });
   }
 
   private async loadTimers() {

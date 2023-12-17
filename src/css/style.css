@@ -1,7 +1,3 @@
-/*
-  This file is used for all of your global styles and CSS variables.
-  Check here https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties for more info on using CSS variables.
-*/
 :root {
   --font-family: sans-serif;
   --background-color: #181818;
@@ -18,19 +14,71 @@ body {
 
 * {
   transition: all 0.25s ease;
+  user-select: none;
 }
 
-fluent-design-system-provider,
-app-index {
-  height: 100%;
-  color: var(--foreground-color);
+@media(prefers-color-scheme: light) {
+  header {
+    color: black;
+  }
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--app-color-primary);
+  color: white;
+  height: 4em;
+  padding: 0 1em;
+}
+
+header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sidebar-content {
+  position: absolute;
+  width: 20em;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  background: var(--background-color);
+  transform: translate3d(-100%, 0, 0);
+  display: flex;
+  flex-direction: column;
+}
+
+.visible .sidebar-content {
+  transform: translate3d(0, 0, 0);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+.visible .overlay  {
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+}
+
 
 @media (prefers-color-scheme: dark) {
-
   html,
   body {
-    background: #000000;
+    background: #181818;
   }
 
   fluent-design-system-provider {
@@ -68,7 +116,6 @@ app-index {
     --neutral-fill-stealth-active: rgba(255, 255, 255, 0.4);
     --neutral-stroke-divider-rest: rgba(255, 255, 255, 0.2);
 
-    --timer-background-default: #181818;
     --timer-background-red: #860101;
     --timer-background-green: #0C5E0C;
     --timer-background-yellow: #D2AD0F;
@@ -80,7 +127,7 @@ app-index {
 
   html,
   body {
-    background: #000000;
+    background: white;
     color: black;
   }
 
@@ -112,7 +159,6 @@ app-index {
     --neutral-fill-stealth-active: rgba(0, 0, 0, 0.4);
     --neutral-fill-rest: #5d5d5d;
     --neutral-fill-input-active: #e5e5e5;
-    --timer-background-default: #FFFFFF;
     --timer-background-red: #FF0909;
     --timer-background-green: #1cb91c;
     --timer-background-yellow: #F2C812;

@@ -1,16 +1,25 @@
 import { LitElement, css, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { IntervalTimer } from '../timer';
 
+/** @extends LitElement */
 @customElement('app-header')
 export class AppHeader extends LitElement {
-  @property({ type: String }) apptitle?: string;
-  @property({ type: Array }) timers?: IntervalTimer[];
-  @property({ type: Number }) selectedTimer?: number;
-  @property({ type: Boolean }) showSidebar = false;
+    /** */
+    @property({ type: String })
+    apptitle = undefined;
+    /** */
+    @property({ type: Array })
+    timers = undefined;
+    /** */
+    @property({ type: Number })
+    selectedTimer = undefined;
+    /** @default false */
+    @property({ type: Boolean })
+    showSidebar = false;
 
-  static get styles() {
-    return css`
+    /** @static */
+    static get styles() {
+        return css `
 
 
       #menu-button-block {
@@ -33,27 +42,30 @@ export class AppHeader extends LitElement {
         }
       }
     `;
-  }
+    }
 
-  toggleSidebar() {
-    this.showSidebar = !this.showSidebar;
-  }
+    /** @returns {void} */
+    toggleSidebar() {
+        this.showSidebar = !this.showSidebar;
+    }
 
-  closeSidebar() {
-    this.showSidebar = false;
-  }
+    /** @returns {void} */
+    closeSidebar() {
+        this.showSidebar = false;
+    }
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  render() {
-    return html`
+    /** @returns {any} */
+    render() {
+        return html `
       <app-sidebar
         ?visible="${this.showSidebar}"
         .timers=${this.timers}
         .selectedTimer=${this.selectedTimer}
         @closesidebar="${this.closeSidebar}"></app-sidebar>
     `;
-  }
+    }
 }

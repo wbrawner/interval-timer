@@ -1,16 +1,23 @@
 import { LitElement, css, html } from 'lit';
 import { property, customElement, query } from 'lit/decorators.js';
-import { IntervalTimer } from '../timer';
 import { SelectTimerEvent } from '../select-timer-event';
 
+/** @extends LitElement */
 @customElement('app-sidebar')
 export class AppSidebar extends LitElement {
-  @property({ type: Boolean }) visible = false;
-  @property({ type: Array }) timers?: IntervalTimer[] = [];
-  @property({ type: Number }) selectedTimer?: number;
+    /** @default false */
+    @property({ type: Boolean })
+    visible = false;
+    /** @default [] */
+    @property({ type: Array })
+    timers = [];
+    /** */
+    @property({ type: Number })
+    selectedTimer = undefined;
 
-  static get styles() {
-    return css`
+    /** @static */
+    static get styles() {
+        return css `
       * {
         transition: all 0.25s ease;
       }
@@ -63,52 +70,61 @@ export class AppSidebar extends LitElement {
         width: 100%;
       }
     `;
-  }
+    }
 
-  @query('fluent-button')
-    fButton?: HTMLElement;
+    /** */
+    @query('fluent-button')
+    fButton = undefined;
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  private toggleVisibility() {
-    this.dispatchEvent(new CustomEvent('closesidebar'));
-  }
+    /** @private
+       * @returns {void}
+       */
+    toggleVisibility() {
+        this.dispatchEvent(new CustomEvent('closesidebar'));
+    }
 
-  private selectTimer(timerId: number) {
-    this.dispatchEvent(new SelectTimerEvent(timerId));
-    this.toggleVisibility();
-  }
+    /** @private
+       * @param {number} timerId
+       * @returns {void}
+       */
+    selectTimer(timerId) {
+        this.dispatchEvent(new SelectTimerEvent(timerId));
+        this.toggleVisibility();
+    }
 
-  private newTimer() {
-    this.dispatchEvent(new CustomEvent(
-      'newtimer',
-      {
-        bubbles: true,
-        composed: true
-      }
-    ));
-    this.toggleVisibility();
-  }
+    /** @private
+       * @returns {void}
+       */
+    newTimer() {
+        this.dispatchEvent(new CustomEvent('newtimer', {
+            bubbles: true,
+            composed: true
+        }));
+        this.toggleVisibility();
+    }
 
-  render() {
-    return html`
+    /** @returns {any} */
+    render() {
+        return html `
       <div class="sidebar ${this.visible ? 'visible' : ''}">
         <div class="overlay" @click="${this.toggleVisibility}"></div>
         <div class="sidebar-content">
           <h3>Trainterval</h3>
           <fluent-listbox>
             ${this.timers?.map(timer => {
-    return html`
+            return html `
                   <fluent-option
-                    @click=${() => this.selectTimer(timer.id!)}
+                    @click=${() => this.selectTimer(timer.id)}
                     selected=${timer.id === this.selectedTimer}
                     value=${timer.name}>
                     ${timer.name}<br />${timer.description || ''}
                   </fluent-option>
                 `;
-  })}
+        })}
           </fluent-listbox>
           <fluent-divider></fluent-divider>
           <fluent-button appearance="stealth" @click="${this.newTimer}">
@@ -117,5 +133,5 @@ export class AppSidebar extends LitElement {
           </fluent-button>
       </div>
     `;
-  }
+    }
 }

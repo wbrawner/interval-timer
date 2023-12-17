@@ -1,12 +1,19 @@
 import { LitElement, css, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { durationString, IntervalTimer, className } from '../timer';
+import {durationString, IntervalTimer, className, Phase} from '../timer';
 import { TimerState } from '../timer-state';
 
 @customElement('active-timer')
 export class ActiveTimer extends LitElement {
   @property({ type: Object }) timer!: IntervalTimer;
   @property({ type: Object }) timerState!: TimerState;
+  private sounds = new Map([
+    [Phase.WARM_UP, new Audio('assets/audio/warm.mp3')],
+    [Phase.LOW_INTENSITY, new Audio('assets/audio/low.mp3')],
+    [Phase.HIGH_INTENSITY, new Audio('assets/audio/high.mp3')],
+    [Phase.REST, new Audio('assets/audio/rest.mp3')],
+    [Phase.COOLDOWN, new Audio('assets/audio/cool.mp3')],
+  ]);
 
   static get styles() {
     return css`
@@ -95,7 +102,7 @@ export class ActiveTimer extends LitElement {
 
   updated() {
     if (!this.timerState || this.timerState.timer !== this.timer) {
-      this.timerState = new TimerState(this.timer, () => this.requestUpdate());
+      this.timerState = new TimerState(this.timer, () => this.requestUpdate(), this.sounds);
     }
   }
 

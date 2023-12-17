@@ -1,5 +1,5 @@
-import { durationString, parseDuration } from '../src/script/timer';
-import { describe, it } from 'vitest';
+import { durationString, parseDuration } from '../src/js/timer';
+import { describe, it } from 'mocha';
 import { assert } from 'chai';
 
 describe('durationString()', function () {
