@@ -29,7 +29,7 @@
     "@typescript-eslint/parser": "^6.16.0",
     "c8": "^8.0.1",
     "eslint": "^8.56.0",
-    "jsdom": "^23.0.1",
+    "jsdom": "^23.2.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-pwa": "^0.17.4",
