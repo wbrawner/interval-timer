@@ -17,7 +17,7 @@
   "dependencies": {
     "@vaadin/router": "^1.7.5",
     "idb": "^8.0.0",
-    "lit": "^3.1.1",
+    "lit": "^3.1.2",
     "workbox-build": "^7.0.0",
     "workbox-core": "^7.0.0",
     "workbox-precaching": "^7.0.0"
