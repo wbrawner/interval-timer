@@ -1,14 +1,11 @@
 name: Publish Docker image
 on:
-  pull_request:
-     types:
-       - closed
+  push:
      branches:
        - main
 
 jobs:
   push_to_registry:
-    if: github.event.pull_request.merged == true
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     steps:
