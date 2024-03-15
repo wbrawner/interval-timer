@@ -22,7 +22,7 @@ jobs:
         run: npm run test
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'wbrawner' || github.actor == 'dependabot[bot]' }}
     steps:
       - name: Dependabot metadata
         id: metadata
