@@ -5,6 +5,8 @@ on:
       - opened
       - reopened
       - edited
+    branches:
+      - main
 
 jobs:
   auto-merge:
