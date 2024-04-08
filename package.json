@@ -30,7 +30,7 @@
     "c8": "^9.1.0",
     "eslint": "^8.57.0",
     "jsdom": "^24.0.0",
-    "typescript": "^5.4.3",
+    "typescript": "^5.4.4",
     "vite": "^5.2.7",
     "vite-plugin-pwa": "^0.19.7",
     "vitest": "^1.4.0"
