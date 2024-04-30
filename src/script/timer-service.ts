@@ -53,7 +53,7 @@ let timerService: TimerService;
 export async function timerServiceSingleton(): Promise<TimerService> {
   if (!timerService) {
     const db = await idb.openDB(dbName, dbVersion, {
-      upgrade(db, _oldVersion, newVersion, _transaction) {
+      upgrade(db, _oldVersion, newVersion) {
         if (newVersion === 1) {
           db.createObjectStore(
             storeName,
