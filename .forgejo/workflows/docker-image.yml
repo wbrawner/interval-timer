@@ -3,7 +3,9 @@ on:
   push:
      branches:
        - main
-
+env:
+  DOCKER_HOST: tcp://docker-in-docker:2375
+  
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
