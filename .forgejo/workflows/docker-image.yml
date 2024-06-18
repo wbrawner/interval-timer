@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install docker
         uses: https://git.wbrawner.com/papodaca/install-docker-action@main
+      - name: Enable docker
+        run: systemctl enable --now docker.service
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
