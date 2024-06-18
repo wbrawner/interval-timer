@@ -12,7 +12,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Install docker
-        uses: papodaca/install-docker-action@main
+        uses: https://git.wbrawner.com/papodaca/install-docker-action@main
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
