@@ -15,7 +15,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            git.wbrawner.com/wbrawner/trainterval
+            git.wbrawner.com/wbrawner/interval-timer
           tags: |
             type=schedule
             type=ref,event=branch
