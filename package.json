@@ -15,7 +15,7 @@
   "author": "William Patrick Brawner <me@wbrawner.com>",
   "license": "AGPL-3.0-only",
   "dependencies": {
-    "@vaadin/router": "^1.7.5",
+    "@vaadin/router": "^2.0.0",
     "idb": "^8.0.0",
     "lit": "^3.1.4",
     "workbox-build": "^7.1.1",
