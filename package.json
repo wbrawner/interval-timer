@@ -32,7 +32,7 @@
     "jsdom": "^26.0.0",
     "typescript": "^5.4.5",
     "vite": "^6.0.0",
-    "vite-plugin-pwa": "^0.21.0",
+    "vite-plugin-pwa": "^1.0.0",
     "vitest": "^3.0.0"
   },
   "prettier": {
